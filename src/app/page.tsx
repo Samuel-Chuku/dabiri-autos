@@ -592,26 +592,45 @@ export default function Home() {
                 </p>
 
                 <div className="space-y-5 mb-8">
-                  {[
-                    { icon: MapPin, title: 'Visit Our Lot', text: '14 Olatunde Onimole St, Surulere, Lagos 100011, Lagos' },
-                    { icon: Phone, title: 'Phone / WhatsApp', text: '08102487687', link: 'tel:+2348102487687' },
-                    { icon: Instagram, title: 'Follow Us', text: '@dabiri_autos', link: 'https://instagram.com/dabiri_autos' },
-                    { icon: Clock, title: 'Business Hours', text: 'Mon - Sat: 9:00 AM - 6:00 PM' },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4 group">
-                      <div className="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E53935] transition-colors duration-300">
-                        <item.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                        {item.link ? (
-                          <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#E53935] transition-colors">{item.text}</a>
-                        ) : (
-                          <p className="text-gray-600">{item.text}</p>
-                        )}
-                      </div>
+                  <a href="#map-section" className="flex items-start gap-4 group cursor-pointer">
+                    <div className="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E53935] transition-colors duration-300">
+                      <MapPin className="w-6 h-6 text-black group-hover:text-white transition-colors" />
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="font-bold text-gray-900 mb-1">Visit Our Lot</h3>
+                      <p className="text-gray-600 group-hover:text-[#E53935] transition-colors">14 Olatunde Onimole St, Surulere, Lagos 100011, Lagos</p>
+                    </div>
+                  </a>
+
+                  <a href="tel:+2348102487687" className="flex items-start gap-4 group cursor-pointer">
+                    <div className="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E53935] transition-colors duration-300">
+                      <Phone className="w-6 h-6 text-black group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 mb-1">Phone / WhatsApp</h3>
+                      <p className="text-gray-600 group-hover:text-[#E53935] transition-colors">08102487687</p>
+                    </div>
+                  </a>
+
+                  <a href="https://instagram.com/dabiri_autos" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group cursor-pointer">
+                    <div className="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E53935] transition-colors duration-300">
+                      <Instagram className="w-6 h-6 text-black group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 mb-1">Follow Us</h3>
+                      <p className="text-gray-600 group-hover:text-[#E53935] transition-colors">@dabiri_autos</p>
+                    </div>
+                  </a>
+
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E53935] transition-colors duration-300">
+                      <Clock className="w-6 h-6 text-black group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 mb-1">Business Hours</h3>
+                      <p className="text-gray-600">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                    </div>
+                  </div>
                 </div>
 
                 <Card className="p-6 shadow-xl border-0 bg-white/90 backdrop-blur-xl">
@@ -644,7 +663,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative h-[700px] sticky top-20">
+            <div id="map-section" className="relative h-[700px] sticky top-20">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.0289!2d3.3525!3d6.4971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b5b3f7d7a1d%3A0x4e6b5c5f8a9b0c1d!2s14%20Olatunde%20Onimole%20St%2C%20Surulere%2C%20Lagos!5e0!3m2!1sen!2sng!4v1699999999999!5m2!1sen!2sng"
                 className="absolute inset-0 w-full h-full border-0"
@@ -700,26 +719,45 @@ export default function Home() {
               </p>
 
               <div className="space-y-4 mb-6">
-                {[
-                  { icon: MapPin, title: 'Visit Our Lot', text: '14 Olatunde Onimole St, Surulere, Lagos' },
-                  { icon: Phone, title: 'Phone / WhatsApp', text: '08102487687', link: 'tel:+2348102487687' },
-                  { icon: Instagram, title: 'Instagram', text: '@dabiri_autos', link: 'https://instagram.com/dabiri_autos' },
-                  { icon: Clock, title: 'Hours', text: 'Mon - Sat: 9AM - 6PM' },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
-                      <item.icon className="w-5 h-5 text-black" />
-                    </div>
-                    <div>
-                      <span className="text-xs text-gray-500">{item.title}</span>
-                      {item.link ? (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="block text-sm font-medium text-gray-900 hover:text-[#E53935]">{item.text}</a>
-                      ) : (
-                        <p className="text-sm font-medium text-gray-900">{item.text}</p>
-                      )}
-                    </div>
+                <a href="#map-section" className="flex items-center gap-3 cursor-pointer">
+                  <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-black" />
                   </div>
-                ))}
+                  <div>
+                    <span className="text-xs text-gray-500">Visit Our Lot</span>
+                    <p className="text-sm font-medium text-gray-900">14 Olatunde Onimole St, Surulere, Lagos</p>
+                  </div>
+                </a>
+
+                <a href="tel:+2348102487687" className="flex items-center gap-3 cursor-pointer">
+                  <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-gray-500">Phone / WhatsApp</span>
+                    <p className="text-sm font-medium text-gray-900">08102487687</p>
+                  </div>
+                </a>
+
+                <a href="https://instagram.com/dabiri_autos" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 cursor-pointer">
+                  <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
+                    <Instagram className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-gray-500">Instagram</span>
+                    <p className="text-sm font-medium text-gray-900">@dabiri_autos</p>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-gray-500">Hours</span>
+                    <p className="text-sm font-medium text-gray-900">Mon - Sat: 9AM - 6PM</p>
+                  </div>
+                </div>
               </div>
 
               <div className="flex gap-3 mb-6">
@@ -752,7 +790,7 @@ export default function Home() {
           </div>
 
           {/* Mobile Map */}
-          <div className="lg:hidden relative h-[300px] w-full">
+          <div id="map-section" className="lg:hidden relative h-[300px] w-full">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.0289!2d3.3525!3d6.4971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b5b3f7d7a1d%3A0x4e6b5c5f8a9b0c1d!2s14%20Olatunde%20Onimole%20St%2C%20Surulere%2C%20Lagos!5e0!3m2!1sen!2sng!4v1699999999999!5m2!1sen!2sng"
               className="absolute inset-0 w-full h-full border-0"
