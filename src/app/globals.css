@@ -49,6 +49,12 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.dark {
+  --color-border: rgba(255, 255, 255, 0.1);
+  --background: #0a0a0f;
+  --foreground: #f9fafb;
+}
+
 * {
   border-color: var(--color-border);
 }
@@ -308,6 +314,58 @@ html {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
   opacity: 0.3;
+}
+
+/* ===== Car Spotlight ===== */
+.car-spotlight-glow {
+  position: absolute;
+  bottom: -10%;
+  left: 10%;
+  right: 10%;
+  height: 40%;
+  background: radial-gradient(ellipse at center, rgba(229, 57, 53, 0.15) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* ===== Carousel Dot Indicators ===== */
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--duration-slow) var(--ease-out);
+}
+
+.carousel-dot[aria-pressed="true"] {
+  width: 24px;
+  background: var(--color-primary);
+}
+
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.carousel-dot[aria-pressed="true"]:hover {
+  background: var(--color-primary-light);
+}
+
+/* ===== Stat Card Prominent ===== */
+.stat-card-prominent {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color var(--duration-slow) var(--ease-out),
+              background var(--duration-slow) var(--ease-out);
+}
+
+.stat-card-prominent:hover {
+  border-color: rgba(229, 57, 53, 0.3);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ===== Focus Ring ===== */

@@ -85,7 +85,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="py-20 md:py-32 relative overflow-hidden">
       {/* Premium layered background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/80 to-white" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/80 to-white dark:from-[#0a0a0f] dark:via-[#0d0d14] dark:to-[#0a0a0f]" aria-hidden="true" />
       <div className="absolute inset-0 bg-mesh-gradient" aria-hidden="true" />
       <div className="absolute inset-0 bg-pattern-diagonal" aria-hidden="true" />
 
@@ -104,10 +104,10 @@ export function ServicesSection() {
             <Gauge className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
             What We Offer
           </Badge>
-          <h2 className="font-display text-h2 text-black mb-4">
+          <h2 className="font-display text-h2 text-black dark:text-white mb-4">
             Our <span className="text-gradient">Services</span>
           </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-body-lg">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-body-lg">
             From buying and selling to maintenance and documentation, we provide end-to-end
             automotive solutions for all your needs.
           </p>
@@ -121,7 +121,7 @@ export function ServicesSection() {
                 key={index}
                 className={`group opacity-0 animate-slide-up stagger-${index + 1}`}
               >
-                <div className={`h-full p-6 rounded-2xl bg-white border border-gray-100 hover:border-gray-200/80 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl ${service.shadowColor} overflow-hidden relative`}>
+                <div className={`h-full p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-gray-200/80 dark:hover:border-[#E53935]/30 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl ${service.shadowColor} overflow-hidden relative`}>
                   {/* Gradient overlay on hover */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500`}
@@ -147,10 +147,10 @@ export function ServicesSection() {
                     />
                   </div>
 
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-2 group-hover:text-[#E53935] transition-colors duration-300">
+                  <h3 className="text-lg font-display font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#E53935] transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
                     {service.description}
                   </p>
                   <div className="flex items-center text-[#E53935] font-semibold text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">

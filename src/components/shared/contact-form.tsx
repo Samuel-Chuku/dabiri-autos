@@ -63,13 +63,13 @@ export function ContactForm({ compact = false }: ContactFormProps) {
 
   if (status === 'success') {
     return (
-      <Card className={`${compact ? 'p-5' : 'p-6'} shadow-xl border-0 bg-white/90 backdrop-blur-xl`}>
+      <Card className={`${compact ? 'p-5' : 'p-6'} shadow-xl border-0 bg-white/90 dark:bg-white/5 backdrop-blur-xl`}>
         <div className="text-center py-8" role="status" aria-live="polite">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <CheckCircle2 className="w-8 h-8 text-green-600" aria-hidden="true" />
           </div>
-          <h3 className="text-xl font-display font-bold text-black mb-2">Message Sent!</h3>
-          <p className="text-gray-600">
+          <h3 className="text-xl font-display font-bold text-black dark:text-white mb-2">Message Sent!</h3>
+          <p className="text-gray-600 dark:text-gray-400">
             Thank you for your inquiry. We&apos;ll contact you shortly.
           </p>
         </div>
@@ -80,8 +80,8 @@ export function ContactForm({ compact = false }: ContactFormProps) {
   const suffix = compact ? '-compact' : ''
 
   return (
-    <Card className={`${compact ? 'p-5' : 'p-6'} shadow-xl border-0 bg-white/90 backdrop-blur-xl`}>
-      <h3 className={`${compact ? 'text-lg' : 'text-xl'} font-display font-bold text-black mb-4`}>
+    <Card className={`${compact ? 'p-5' : 'p-6'} shadow-xl border-0 bg-white/90 dark:bg-white/5 backdrop-blur-xl`}>
+      <h3 className={`${compact ? 'text-lg' : 'text-xl'} font-display font-bold text-black dark:text-white mb-4`}>
         Send Us a Message
       </h3>
       <form onSubmit={handleSubmit} className={compact ? 'space-y-3' : 'space-y-4'} noValidate>
@@ -183,7 +183,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
               inputMode="email"
             />
             <div>
-              <label htmlFor={`message${suffix}`} className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor={`message${suffix}`} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Message
               </label>
               <Textarea
@@ -256,7 +256,7 @@ function FormField({
 }: FormFieldProps) {
   return (
     <div>
-      <label htmlFor={id} className={srOnly ? 'sr-only' : 'block text-sm font-medium text-gray-700 mb-2'}>
+      <label htmlFor={id} className={srOnly ? 'sr-only' : 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'}>
         {label}
       </label>
       <Input

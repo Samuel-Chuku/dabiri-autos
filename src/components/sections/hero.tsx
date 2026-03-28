@@ -1,33 +1,74 @@
 'use client'
 
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { WhatsAppButton } from '@/components/shared/whatsapp-button'
-import { SocialLinks } from '@/components/shared/social-links'
 import { stats } from '@/data/stats'
 
+const HERO_BACKGROUNDS = [
+  { id: 'main', image: '/dabiri-bg.png', alt: 'Dabiri Autos car lot with lineup of vehicles' },
+  { id: 'sonata', image: '/hero_sonanta.png', alt: 'Black Hyundai Sonata at Dabiri Autos' },
+  { id: 'mercedes', image: '/hero_benzOut.png', alt: 'White Mercedes-Benz at Dabiri Autos' },
+  { id: 'toyota', image: '/hero_4.png', alt: 'Silver Toyota Highlander at Dabiri Autos' },
+] as const
+
+const ROTATION_INTERVAL = 6000
+const PAUSE_DURATION = 10000
+
 export function HeroSection() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    if (isPaused) return
+    const timer = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % HERO_BACKGROUNDS.length)
+    }, ROTATION_INTERVAL)
+    return () => clearInterval(timer)
+  }, [isPaused])
+
+  useEffect(() => {
+    return () => {
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current)
+    }
+  }, [])
+
+  const goToSlide = useCallback((index: number) => {
+    setActiveIndex(index)
+    setIsPaused(true)
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current)
+    pauseTimerRef.current = setTimeout(() => setIsPaused(false), PAUSE_DURATION)
+  }, [])
+
   return (
     <section
       id="home"
       className="relative min-h-[calc(100dvh-5rem)] flex items-center overflow-hidden"
     >
-      {/* Background image with premium overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/dabiri-bg.png)' }}
-        role="img"
-        aria-label="Dabiri Autos dealership showroom"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
-        {/* Red tint overlay for premium feel */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E53935]/10 via-transparent to-transparent mix-blend-overlay" />
-      </div>
+      {/* Rotating background images */}
+      {HERO_BACKGROUNDS.map((bg, i) => (
+        <div
+          key={bg.id}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+            i === activeIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ backgroundImage: `url(${bg.image})` }}
+          role="img"
+          aria-label={bg.alt}
+          aria-hidden={i !== activeIndex}
+        />
+      ))}
 
-      {/* Animated background elements */}
+      {/* Dark overlays for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#E53935]/8 via-transparent to-transparent mix-blend-overlay" />
+
+      {/* Ambient glow accents */}
       <div
         className="absolute top-[15%] right-[15%] w-80 h-80 bg-[#E53935]/10 rounded-full blur-[100px] animate-glow-pulse"
         aria-hidden="true"
@@ -37,35 +78,32 @@ export function HeroSection() {
         style={{ animationDelay: '2s' }}
         aria-hidden="true"
       />
-      <div
-        className="absolute top-[40%] right-[40%] w-40 h-40 bg-white/[0.03] rounded-full blur-[60px]"
-        aria-hidden="true"
-      />
-
-      {/* Floating geometric accents */}
-      <div className="absolute top-[20%] right-[25%] w-1 h-20 bg-gradient-to-b from-[#E53935]/40 to-transparent rotate-12" aria-hidden="true" />
-      <div className="absolute bottom-[30%] right-[10%] w-20 h-20 border border-[#E53935]/10 rounded-full animate-orbit" style={{ animationDuration: '25s' }} aria-hidden="true" />
-      <div className="absolute top-[60%] right-[20%] w-2 h-2 bg-[#E53935]/30 rounded-full animate-pulse" aria-hidden="true" />
 
       {/* Noise texture */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" aria-hidden="true" />
 
-      <div className="relative container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-2xl">
+      <div className="relative container mx-auto px-4 py-12 md:py-20 lg:py-24">
+        {/* Hero content — single column, centered on mobile, left on desktop */}
+        <div className="max-w-2xl mx-auto lg:mx-0">
           <Badge className="mb-5 bg-white/10 text-[#E53935] border-[#E53935]/30 hover:bg-white/15 backdrop-blur-sm px-4 py-1.5 transition-all duration-300">
             <Sparkles className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
-            Trusted Nigerian Auto Dealer
+            Lagos&apos; Premium Auto Dealer
           </Badge>
-          <h1 className="font-display text-h1 text-white mb-5 md:mb-6 leading-[1.1]">
-            Revving Up Your Ride With{' '}
-            <span className="text-gradient">Top-Notch Cars</span>
+
+          <h1 className="font-display text-h1 text-white mb-5 md:mb-6 leading-[1.1] text-center lg:text-left">
+            Drive Home Your Dream Car{' '}
+            <span className="text-gradient">Today</span>
           </h1>
-          <p className="text-body-lg text-gray-300/90 mb-8 max-w-xl leading-relaxed">
-            Your trusted partner for quality Nigerian used and foreign used vehicles. We
-            specialize in Toyota, Lexus, and Mercedes-Benz.{' '}
-            <span className="text-[#E53935] font-semibold"> iBUY &bull; iSELL &bull; iSWAP</span>
+
+          <p className="text-body-lg text-gray-300/90 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed text-center lg:text-left">
+            Quality foreign and Nigerian used vehicles from trusted brands.
+            We specialize in Toyota, Lexus, and Mercedes-Benz.{' '}
+            <span className="text-[#E53935] font-semibold">
+              iBUY &bull; iSELL &bull; iSWAP
+            </span>
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
             <Link href="/inventory">
               <Button
                 size="lg"
@@ -77,32 +115,46 @@ export function HeroSection() {
             </Link>
             <WhatsAppButton />
           </div>
+        </div>
 
-          {/* Stats with glass cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 md:mt-14">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon
-              return (
-                <div key={index} className="text-center md:text-left group p-3 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] hover:border-[#E53935]/20 transition-all duration-300 hover:bg-white/[0.07]">
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#E53935]/20 flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-[#E53935]" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <div className="text-lg md:text-xl font-display font-bold text-white group-hover:text-[#E53935] transition-colors">
-                        {stat.value}
-                      </div>
-                      <div className="text-xs text-gray-400">{stat.label}</div>
-                    </div>
-                  </div>
+        {/* Dot indicators for background rotation */}
+        <div
+          className="flex justify-center lg:justify-start gap-2 mt-10"
+          role="tablist"
+          aria-label="Select background image"
+        >
+          {HERO_BACKGROUNDS.map((bg, i) => (
+            <button
+              key={bg.id}
+              className="carousel-dot"
+              role="tab"
+              aria-label={`Show ${bg.alt}`}
+              aria-pressed={i === activeIndex}
+              aria-selected={i === activeIndex}
+              onClick={() => goToSlide(i)}
+            />
+          ))}
+        </div>
+
+        {/* STATS BAR */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-12 lg:mt-16">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon
+            return (
+              <div
+                key={index}
+                className="stat-card-prominent rounded-xl p-3 md:p-4 text-center"
+              >
+                <div className="w-8 h-8 rounded-lg bg-[#E53935]/20 flex items-center justify-center mx-auto mb-2">
+                  <Icon className="w-4 h-4 text-[#E53935]" aria-hidden="true" />
                 </div>
-              )
-            })}
-          </div>
-
-          <div className="flex items-center gap-4 mt-10 md:mt-12 pt-6 border-t border-white/10">
-            <SocialLinks showLabel />
-          </div>
+                <div className="text-lg md:text-xl font-display font-bold text-white">
+                  {stat.value}
+                </div>
+                <div className="text-xs text-gray-400 mt-0.5">{stat.label}</div>
+              </div>
+            )
+          })}
         </div>
       </div>
 

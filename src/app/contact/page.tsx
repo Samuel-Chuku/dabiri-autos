@@ -55,14 +55,14 @@ export default function ContactPage() {
       </section>
 
       {/* Contact content */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#0d0d12] dark:via-[#0a0a0f] dark:to-[#0d0d12] relative">
         <div className="absolute inset-0 bg-pattern-grid" aria-hidden="true" />
 
         <div className="relative container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left: Info */}
             <div>
-              <h2 className="font-display text-h2 text-black mb-8">
+              <h2 className="font-display text-h2 text-black dark:text-white mb-8">
                 How to Reach Us
               </h2>
 
@@ -75,12 +75,12 @@ export default function ContactPage() {
                     rel={item.external ? 'noopener noreferrer' : undefined}
                     className="flex items-start gap-4 group"
                   >
-                    <div className="w-14 h-14 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
-                      <item.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" aria-hidden="true" />
+                    <div className="w-14 h-14 bg-black/5 dark:bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
+                      <item.icon className="w-6 h-6 text-black dark:text-white group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-gray-900 mb-1">{item.title}</h3>
-                      <p className="text-gray-600 group-hover:text-primary transition-colors">
+                      <h3 className="font-display font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
                         {item.detail}
                       </p>
                     </div>
@@ -88,12 +88,12 @@ export default function ContactPage() {
                 ))}
 
                 <div className="flex items-start gap-4 group">
-                  <div className="w-14 h-14 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
-                    <Clock className="w-6 h-6 text-black group-hover:text-white transition-colors" aria-hidden="true" />
+                  <div className="w-14 h-14 bg-black/5 dark:bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
+                    <Clock className="w-6 h-6 text-black dark:text-white group-hover:text-white transition-colors" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-gray-900 mb-1">Business Hours</h3>
-                    <p className="text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                    <h3 className="font-display font-bold text-gray-900 dark:text-white mb-1">Business Hours</h3>
+                    <p className="text-gray-600 dark:text-gray-400">Monday - Saturday: 9:00 AM - 6:00 PM</p>
                     <p className="text-gray-400 text-sm">Sunday: Closed</p>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
           referrerPolicy="no-referrer-when-downgrade"
           title="Dabiri Autos location on Google Maps"
         />
-        <div className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 bg-white rounded-2xl shadow-2xl p-5 max-w-sm z-10">
+        <div className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-5 max-w-sm z-10">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg border border-gray-100 overflow-hidden">
               <img
@@ -152,7 +152,7 @@ export default function ContactPage() {
               />
             </div>
             <div className="flex-1">
-              <h3 className="font-display font-bold text-gray-900 text-lg">
+              <h3 className="font-display font-bold text-gray-900 dark:text-white text-lg">
                 Dabiri Autos Limited
               </h3>
               <p className="text-gray-500 text-sm mt-1">

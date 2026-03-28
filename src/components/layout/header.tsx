@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Phone, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { ThemeToggle } from '@/components/shared/theme-toggle'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -96,8 +97,8 @@ export function Header() {
       <header
         className={`sticky top-0 z-50 transition-all duration-slow ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100'
-            : 'bg-white border-b border-gray-200 shadow-md'
+            ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg border-b border-gray-100 dark:border-white/10'
+            : 'bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-white/10 shadow-md'
         }`}
       >
         <div className="container mx-auto px-4">
@@ -117,7 +118,7 @@ export function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-gray-700 hover:text-black font-medium transition-colors relative group"
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white font-medium transition-colors relative group"
                 >
                   {link.label}
                   <span
@@ -129,8 +130,9 @@ export function Header() {
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle />
               <a href="tel:+2348102487687" aria-label="Call Dabiri Autos">
-                <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white transition-all duration-slow">
+                <Button variant="outline" className="border-black dark:border-white text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-slow">
                   <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
                   Call Us
                 </Button>
@@ -144,7 +146,7 @@ export function Header() {
 
             <button
               ref={toggleRef}
-              className="lg:hidden p-2 text-gray-700 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="lg:hidden p-2 text-gray-700 dark:text-gray-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
@@ -175,15 +177,15 @@ export function Header() {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            className={`fixed top-0 right-0 h-full w-[280px] bg-white shadow-2xl z-[9999] lg:hidden transition-transform duration-slow ${
+            className={`fixed top-0 right-0 h-full w-[280px] bg-white dark:bg-gray-900 shadow-2xl z-[9999] lg:hidden transition-transform duration-slow ${
               mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
-              <span className="font-display font-bold text-lg">Menu</span>
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-white/10">
+              <span className="font-display font-bold text-lg dark:text-white">Menu</span>
               <button
                 onClick={closeMobileMenu}
-                className="p-2 text-gray-700 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className="p-2 text-gray-700 dark:text-gray-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 aria-label="Close navigation menu"
               >
                 <X className="w-6 h-6" />
@@ -194,7 +196,7 @@ export function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-gray-700 hover:text-black font-medium py-3 px-2 border-b border-gray-100 min-h-[44px] flex items-center"
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white font-medium py-3 px-2 border-b border-gray-100 dark:border-white/10 min-h-[44px] flex items-center"
                   onClick={closeMobileMenu}
                 >
                   {link.label}
@@ -202,7 +204,7 @@ export function Header() {
               ))}
               <div className="flex flex-col gap-3 mt-6">
                 <a href="tel:+2348102487687" aria-label="Call Dabiri Autos">
-                  <Button variant="outline" className="border-black text-black w-full min-h-[44px]">
+                  <Button variant="outline" className="border-black dark:border-white text-black dark:text-white w-full min-h-[44px]">
                     <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
                     Call Us
                   </Button>

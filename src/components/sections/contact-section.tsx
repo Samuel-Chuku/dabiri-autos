@@ -33,16 +33,16 @@ export function ContactSection() {
       {/* Desktop layout */}
       <div className="hidden lg:grid lg:grid-cols-2 min-h-[700px]">
         {/* Contact info + form */}
-        <div className="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16 px-8 xl:px-16 overflow-y-auto">
+        <div className="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#0d0d12] dark:via-[#0a0a0f] dark:to-[#0d0d12] py-16 px-8 xl:px-16 overflow-y-auto">
           <div className="absolute inset-0 bg-pattern-grid" aria-hidden="true" />
           <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-primary/5 to-transparent rounded-full blur-3xl" aria-hidden="true" />
 
           <div className="relative max-w-xl mx-auto">
             <Badge className="mb-3 bg-primary/10 text-primary">Contact Us</Badge>
-            <h2 className="font-display text-h2 text-black mb-4">
+            <h2 className="font-display text-h2 text-black dark:text-white mb-4">
               Get In <span className="text-gradient">Touch</span>
             </h2>
-            <p className="text-gray-600 mb-8 text-body">
+            <p className="text-gray-600 dark:text-gray-400 mb-8 text-body">
               Interested in a vehicle? Want to sell or swap your car? Contact us today or visit
               our lot.
             </p>
@@ -56,12 +56,12 @@ export function ContactSection() {
                   rel={item.external ? 'noopener noreferrer' : undefined}
                   className="flex items-start gap-4 group cursor-pointer"
                 >
-                  <div className="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
-                    <item.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" aria-hidden="true" />
+                  <div className="w-12 h-12 bg-black/5 dark:bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
+                    <item.icon className="w-6 h-6 text-black dark:text-white group-hover:text-white transition-colors" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                    <p className="text-gray-600 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
                       {item.detail}
                     </p>
                   </div>
@@ -69,12 +69,12 @@ export function ContactSection() {
               ))}
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
-                  <Clock className="w-6 h-6 text-black group-hover:text-white transition-colors" aria-hidden="true" />
+                <div className="w-12 h-12 bg-black/5 dark:bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
+                  <Clock className="w-6 h-6 text-black dark:text-white group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Business Hours</h3>
-                  <p className="text-gray-600">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-1">Business Hours</h3>
+                  <p className="text-gray-600 dark:text-gray-400">Mon - Sat: 9:00 AM - 6:00 PM</p>
                 </div>
               </div>
             </div>
@@ -94,7 +94,7 @@ export function ContactSection() {
             title="Dabiri Autos location on Google Maps"
           />
 
-          <div className="absolute top-6 left-6 right-6 bg-white rounded-2xl shadow-2xl p-5 max-w-sm z-10">
+          <div className="absolute top-6 left-6 right-6 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-5 max-w-sm z-10">
             <div className="flex items-start gap-4">
               <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg border border-gray-100 overflow-hidden">
                 <img
@@ -106,7 +106,7 @@ export function ContactSection() {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="font-display font-bold text-gray-900 text-lg">
+                <h3 className="font-display font-bold text-gray-900 dark:text-white text-lg">
                   Dabiri Autos Limited
                 </h3>
                 <p className="text-gray-500 text-sm mt-1">
@@ -154,13 +154,13 @@ export function ContactSection() {
       </div>
 
       {/* Mobile layout */}
-      <div className="lg:hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 py-12 px-4">
+      <div className="lg:hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#0d0d12] dark:via-[#0a0a0f] dark:to-[#0d0d12] py-12 px-4">
         <div className="relative">
           <Badge className="mb-3 bg-primary/10 text-primary">Contact Us</Badge>
-          <h2 className="font-display text-h2 text-black mb-4">
+          <h2 className="font-display text-h2 text-black dark:text-white mb-4">
             Get In <span className="text-gradient">Touch</span>
           </h2>
-          <p className="text-gray-600 mb-6 text-body">
+          <p className="text-gray-600 dark:text-gray-400 mb-6 text-body">
             Interested in a vehicle? Want to sell or swap your car? Contact us today.
           </p>
 
@@ -173,23 +173,23 @@ export function ContactSection() {
                 rel={item.external ? 'noopener noreferrer' : undefined}
                 className="flex items-center gap-3 cursor-pointer"
               >
-                <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
+                <div className="w-10 h-10 bg-black/5 dark:bg-white/10 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
                   <item.icon className="w-5 h-5 text-black" aria-hidden="true" />
                 </div>
                 <div>
                   <span className="text-xs text-gray-500">{item.title}</span>
-                  <p className="text-sm font-medium text-gray-900">{item.detail}</p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">{item.detail}</p>
                 </div>
               </a>
             ))}
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
+              <div className="w-10 h-10 bg-black/5 dark:bg-white/10 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
                 <Clock className="w-5 h-5 text-black" aria-hidden="true" />
               </div>
               <div>
                 <span className="text-xs text-gray-500">Hours</span>
-                <p className="text-sm font-medium text-gray-900">Mon - Sat: 9AM - 6PM</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-white">Mon - Sat: 9AM - 6PM</p>
               </div>
             </div>
           </div>
@@ -229,7 +229,7 @@ export function ContactSection() {
           referrerPolicy="no-referrer-when-downgrade"
           title="Dabiri Autos location on Google Maps"
         />
-        <div className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl shadow-2xl p-4 z-10">
+        <div className="absolute bottom-4 left-4 right-4 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-4 z-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md border border-gray-100 overflow-hidden">
@@ -242,8 +242,8 @@ export function ContactSection() {
                 />
               </div>
               <div>
-                <h3 className="font-display font-bold text-gray-900">Dabiri Autos Limited</h3>
-                <p className="text-sm text-gray-500">14 Olatunde Onimole St, Surulere</p>
+                <h3 className="font-display font-bold text-gray-900 dark:text-white">Dabiri Autos Limited</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">14 Olatunde Onimole St, Surulere</p>
               </div>
             </div>
             <a
