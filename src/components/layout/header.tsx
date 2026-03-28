@@ -183,13 +183,16 @@ export function Header() {
           >
             <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-white/10">
               <span className="font-display font-bold text-lg dark:text-white">Menu</span>
-              <button
-                onClick={closeMobileMenu}
-                className="p-2 text-gray-700 dark:text-gray-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
-                aria-label="Close navigation menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <button
+                  onClick={closeMobileMenu}
+                  className="p-2 text-gray-700 dark:text-gray-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  aria-label="Close navigation menu"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
             </div>
             <nav className="flex flex-col p-4" aria-label="Mobile navigation">
               {navLinks.map((link) => (
