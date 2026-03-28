@@ -2,6 +2,7 @@
 
 import { Shield, BadgeDollarSign, Wallet, ArrowLeftRight, HeartHandshake, Award } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
+import { AuroraBg } from '@/components/shared/aurora-bg'
 
 const reasons = [
   {
@@ -44,21 +45,9 @@ const reasons = [
 
 export function WhyChooseUsSection() {
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background with subtle depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#0d0d14] to-[#0a0a0f]" aria-hidden="true" />
-      <div className="absolute inset-0 bg-pattern-dots" aria-hidden="true" />
-
-      {/* Geometric accents */}
-      <div className="absolute top-[15%] left-[5%] w-40 h-40 border border-[#E53935]/[0.08] rounded-full" aria-hidden="true" />
-      <div className="absolute top-[15%] left-[5%] w-40 h-40 border border-[#E53935]/[0.04] rounded-full scale-150" aria-hidden="true" />
-      <div className="absolute bottom-[15%] right-[5%] w-32 h-32 border border-white/[0.05] rounded-full" aria-hidden="true" />
-      <div className="absolute bottom-[15%] right-[5%] w-32 h-32 border border-white/[0.03] rounded-full scale-150" aria-hidden="true" />
-
-      {/* Glow accents */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#E53935]/[0.03] rounded-full blur-[100px]" aria-hidden="true" />
-
-      <div className="relative container mx-auto px-4">
+    <AuroraBg>
+    <section className="py-20 md:py-32">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
           <Badge className="mb-4 bg-white/10 text-[#E53935] border-[#E53935]/20 backdrop-blur-sm px-4 py-1.5">
             Why Us
@@ -95,5 +84,6 @@ export function WhyChooseUsSection() {
         </div>
       </div>
     </section>
+    </AuroraBg>
   )
 }

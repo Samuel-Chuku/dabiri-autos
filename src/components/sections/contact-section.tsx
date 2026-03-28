@@ -4,6 +4,7 @@ import { MapPin, Phone, Clock, Instagram, Navigation } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { ContactForm } from '@/components/shared/contact-form'
 import { WhatsAppIcon } from '@/components/shared/whatsapp-icon'
+import { AuroraBg } from '@/components/shared/aurora-bg'
 
 const contactInfo = [
   {
@@ -33,16 +34,13 @@ export function ContactSection() {
       {/* Desktop layout */}
       <div className="hidden lg:grid lg:grid-cols-2 min-h-[700px]">
         {/* Contact info + form */}
-        <div className="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#0d0d12] dark:via-[#0a0a0f] dark:to-[#0d0d12] py-16 px-8 xl:px-16 overflow-y-auto">
-          <div className="absolute inset-0 bg-pattern-grid" aria-hidden="true" />
-          <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-primary/5 to-transparent rounded-full blur-3xl" aria-hidden="true" />
-
-          <div className="relative max-w-xl mx-auto">
+        <AuroraBg className="py-16 px-8 xl:px-16 overflow-y-auto">
+          <div className="max-w-xl mx-auto">
             <Badge className="mb-3 bg-primary/10 text-primary">Contact Us</Badge>
-            <h2 className="font-display text-h2 text-black dark:text-white mb-4">
+            <h2 className="font-display text-h2 text-white mb-4">
               Get In <span className="text-gradient">Touch</span>
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-8 text-body">
+            <p className="text-gray-400 mb-8 text-body">
               Interested in a vehicle? Want to sell or swap your car? Contact us today or visit
               our lot.
             </p>
@@ -56,12 +54,12 @@ export function ContactSection() {
                   rel={item.external ? 'noopener noreferrer' : undefined}
                   className="flex items-start gap-4 group cursor-pointer"
                 >
-                  <div className="w-12 h-12 bg-black/5 dark:bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
-                    <item.icon className="w-6 h-6 text-black dark:text-white group-hover:text-white transition-colors" aria-hidden="true" />
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
+                    <item.icon className="w-6 h-6 text-white group-hover:text-white transition-colors" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-white mb-1">{item.title}</h3>
+                    <p className="text-gray-400 group-hover:text-primary transition-colors">
                       {item.detail}
                     </p>
                   </div>
@@ -69,19 +67,19 @@ export function ContactSection() {
               ))}
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 bg-black/5 dark:bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
-                  <Clock className="w-6 h-6 text-black dark:text-white group-hover:text-white transition-colors" aria-hidden="true" />
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-slow min-w-[44px] min-h-[44px]">
+                  <Clock className="w-6 h-6 text-white group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 dark:text-white mb-1">Business Hours</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                  <h3 className="font-bold text-white mb-1">Business Hours</h3>
+                  <p className="text-gray-400">Mon - Sat: 9:00 AM - 6:00 PM</p>
                 </div>
               </div>
             </div>
 
             <ContactForm />
           </div>
-        </div>
+        </AuroraBg>
 
         {/* Map */}
         <div id="map-section" className="relative h-[700px] sticky top-20">
@@ -154,13 +152,13 @@ export function ContactSection() {
       </div>
 
       {/* Mobile layout */}
-      <div className="lg:hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#0d0d12] dark:via-[#0a0a0f] dark:to-[#0d0d12] py-12 px-4">
-        <div className="relative">
+      <AuroraBg className="lg:hidden py-12 px-4">
+        <div>
           <Badge className="mb-3 bg-primary/10 text-primary">Contact Us</Badge>
-          <h2 className="font-display text-h2 text-black dark:text-white mb-4">
+          <h2 className="font-display text-h2 text-white mb-4">
             Get In <span className="text-gradient">Touch</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 text-body">
+          <p className="text-gray-400 mb-6 text-body">
             Interested in a vehicle? Want to sell or swap your car? Contact us today.
           </p>
 
@@ -173,23 +171,23 @@ export function ContactSection() {
                 rel={item.external ? 'noopener noreferrer' : undefined}
                 className="flex items-center gap-3 cursor-pointer"
               >
-                <div className="w-10 h-10 bg-black/5 dark:bg-white/10 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
-                  <item.icon className="w-5 h-5 text-black" aria-hidden="true" />
+                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
+                  <item.icon className="w-5 h-5 text-white" aria-hidden="true" />
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500">{item.title}</span>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">{item.detail}</p>
+                  <span className="text-xs text-gray-400">{item.title}</span>
+                  <p className="text-sm font-medium text-white">{item.detail}</p>
                 </div>
               </a>
             ))}
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-black/5 dark:bg-white/10 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
-                <Clock className="w-5 h-5 text-black" aria-hidden="true" />
+              <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center min-w-[44px] min-h-[44px]">
+                <Clock className="w-5 h-5 text-white" aria-hidden="true" />
               </div>
               <div>
-                <span className="text-xs text-gray-500">Hours</span>
-                <p className="text-sm font-medium text-gray-900 dark:text-white">Mon - Sat: 9AM - 6PM</p>
+                <span className="text-xs text-gray-400">Hours</span>
+                <p className="text-sm font-medium text-white">Mon - Sat: 9AM - 6PM</p>
               </div>
             </div>
           </div>
@@ -217,7 +215,7 @@ export function ContactSection() {
 
           <ContactForm compact />
         </div>
-      </div>
+      </AuroraBg>
 
       {/* Mobile Map */}
       <div className="lg:hidden relative h-[300px] w-full">

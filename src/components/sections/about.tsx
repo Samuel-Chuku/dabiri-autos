@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import { AuroraBg } from '@/components/shared/aurora-bg'
 
 const specialties = [
   'Toyota Specialists',
@@ -24,20 +25,9 @@ const stats = [
 
 export function AboutSection() {
   return (
-    <section id="aboutus" className="py-20 md:py-32 relative overflow-hidden">
-      {/* Deep dark background with warm undertones */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0d0d12] via-[#0a0a0f] to-[#0d0d12]" aria-hidden="true" />
-      <div className="absolute inset-0 bg-pattern-dots" aria-hidden="true" />
-
-      {/* Ambient glow */}
-      <div className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-[#E53935]/[0.06] rounded-full blur-[120px] animate-glow-pulse" aria-hidden="true" />
-      <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-[100px]" aria-hidden="true" />
-
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-[10%] w-px h-32 bg-gradient-to-b from-[#E53935]/30 to-transparent" aria-hidden="true" />
-      <div className="absolute bottom-20 right-[10%] w-px h-32 bg-gradient-to-t from-[#E53935]/30 to-transparent" aria-hidden="true" />
-
-      <div className="relative container mx-auto px-4">
+    <AuroraBg>
+    <section id="aboutus" className="py-20 md:py-32">
+      <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <Badge className="mb-4 bg-white/10 text-[#E53935] border-[#E53935]/20 backdrop-blur-sm px-4 py-1.5">
@@ -105,5 +95,6 @@ export function AboutSection() {
         </div>
       </div>
     </section>
+    </AuroraBg>
   )
 }

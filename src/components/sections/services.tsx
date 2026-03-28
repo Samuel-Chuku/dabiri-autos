@@ -13,6 +13,7 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
+import { ScrollFrameBg } from '@/components/shared/scroll-frame-bg'
 
 const services = [
   {
@@ -83,22 +84,9 @@ const services = [
 
 export function ServicesSection() {
   return (
+    <ScrollFrameBg frameDir="/frames/scene1" totalFrames={169} overlayOpacity={0.7}>
     <section id="services" className="py-20 md:py-32 relative overflow-hidden">
-      {/* Premium layered background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/80 to-white dark:from-[#0a0a0f] dark:via-[#0d0d14] dark:to-[#0a0a0f]" aria-hidden="true" />
-      <div className="absolute inset-0 bg-mesh-gradient" aria-hidden="true" />
-      <div className="absolute inset-0 bg-pattern-diagonal" aria-hidden="true" />
-
-      {/* Floating orbs */}
-      <div className="absolute top-20 right-[10%] w-72 h-72 bg-[#E53935]/[0.04] rounded-full blur-3xl animate-glow-pulse" aria-hidden="true" />
-      <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-black/[0.02] rounded-full blur-3xl" aria-hidden="true" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#E53935]/[0.03] to-transparent rounded-full blur-3xl" aria-hidden="true" />
-
-      {/* Subtle accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E53935]/20 to-transparent" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent" aria-hidden="true" />
-
-      <div className="relative container mx-auto px-4">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-14 md:mb-16">
           <Badge className="mb-4 bg-[#E53935]/10 text-[#E53935] border-[#E53935]/20 px-4 py-1.5">
             <Gauge className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
@@ -164,5 +152,6 @@ export function ServicesSection() {
         </div>
       </div>
     </section>
+    </ScrollFrameBg>
   )
 }
