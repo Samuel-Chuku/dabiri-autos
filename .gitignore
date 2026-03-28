@@ -5,8 +5,7 @@ node_modules/
 .next/
 out/
 
-# Video assets and extracted frames (large binaries — store separately)
-public/frames/
+# Video source files (not needed at runtime)
 public/*.mp4
 public/*.mov
 public/*.webm
