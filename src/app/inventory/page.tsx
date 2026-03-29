@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { VehicleCard } from '@/components/shared/vehicle-card'
 import { vehicles, makes, conditions, bodyTypes } from '@/data/vehicles'
+import { LogoSplash } from '@/components/shared/logo-splash'
+import { AutoLoopFrames } from '@/components/shared/auto-loop-frames'
 
 export default function InventoryPage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -45,10 +47,17 @@ export default function InventoryPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black">
+      <LogoSplash />
+
       {/* Header */}
       <section className="relative py-16 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-pattern-dots opacity-5" aria-hidden="true" />
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" aria-hidden="true" />
+        <AutoLoopFrames
+          frameDir="/frames/scene1"
+          totalFrames={169}
+          fps={16}
+          overlayOpacity={0.58}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 pointer-events-none" aria-hidden="true" />
 
         <div className="relative container mx-auto px-4">
           <div className="text-center mb-8">

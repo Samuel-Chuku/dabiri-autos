@@ -167,6 +167,27 @@ html {
   animation: rotate-slow 30s linear infinite;
 }
 
+@keyframes marquee-ltr {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.animate-marquee-ltr {
+  animation: marquee-ltr 35s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee-brand {
+  /* JS sets --unit-w and animation-duration at runtime */
+  from { transform: translateX(calc(-1 * var(--unit-w, 1400px))); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-brand {
+  animation: marquee-brand 14s linear infinite; /* duration overridden by JS */
+  will-change: transform;
+}
+
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
