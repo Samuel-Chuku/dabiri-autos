@@ -84,7 +84,7 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <ScrollFrameBg frameDir="/frames/scene1" totalFrames={169} overlayOpacity={0.7}>
+    <ScrollFrameBg frameDir="/frames/scene1" totalFrames={169} overlayOpacity={0.45}>
     <section id="services" className="py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14 md:mb-16">
@@ -92,7 +92,7 @@ export function ServicesSection() {
             <Gauge className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
             What We Offer
           </Badge>
-          <h2 className="font-display text-h2 text-black dark:text-white mb-4">
+          <h2 className="font-display text-h2 text-white mb-4">
             Our <span className="text-gradient">Services</span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-body-lg">
