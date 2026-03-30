@@ -24,16 +24,23 @@ export function FeaturedVehiclesSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/[0.03] rounded-full animate-rotate-slow" aria-hidden="true" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-[#E53935]/[0.03] rounded-full animate-rotate-slow" style={{ animationDirection: 'reverse', animationDuration: '45s' }} aria-hidden="true" />
 
-      <div className="relative container mx-auto px-4">
+      {/* Light mode overlay — covers dark bg, invisible in dark mode */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-red-50 dark:hidden z-[1]" aria-hidden="true" />
+      {/* Light mode: diagonal red accent block bottom-right */}
+      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-red-100/60 to-transparent dark:hidden z-[1]" aria-hidden="true" />
+      {/* Light mode: section bottom divider */}
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#E53935]/40 to-transparent dark:hidden z-[1]" aria-hidden="true" />
+
+      <div className="relative z-[2] container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
-          <Badge className="mb-4 bg-white/10 text-[#E53935] border-[#E53935]/20 backdrop-blur-sm px-4 py-1.5">
+          <Badge className="mb-4 bg-[#E53935]/10 dark:bg-white/10 text-[#E53935] border-[#E53935]/20 backdrop-blur-sm px-4 py-1.5">
             <Gauge className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
             Our Inventory
           </Badge>
-          <h2 className="font-display text-h2 text-white mb-4">
+          <h2 className="font-display text-h2 text-gray-900 dark:text-white mb-4">
             Featured <span className="text-gradient">Vehicles</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-body-lg">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-body-lg">
             Explore our hand-picked selection of quality Toyota, Lexus, and Mercedes-Benz
             vehicles. Each car undergoes thorough inspection.
           </p>
