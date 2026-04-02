@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import "./globals.css";
 
@@ -48,9 +46,7 @@ export default function RootLayout({
           <a href="#main-content" className="skip-link">
             Skip to content
           </a>
-          <Header />
           <main id="main-content">{children}</main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
