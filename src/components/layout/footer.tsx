@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { MapPin, Phone, Instagram, Facebook, MessageCircle, ChevronRight } from 'lucide-react'
+import { MapPin, Phone, Instagram, Facebook, Mail, MessageCircle, ChevronRight } from 'lucide-react'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -164,6 +164,7 @@ export function Footer() {
                 { icon: MapPin, text: '14 Olatunde Onimole St, Surulere, Lagos' },
                 { icon: Phone, text: '07025317059' },
                 { icon: Instagram, text: '@dabiri_autos' },
+                { icon: Mail, text: 'info@dabiriautos.ng' },
               ].map((item, index) => (
                 <li key={index} className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm group">
                   <item.icon className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />

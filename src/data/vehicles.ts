@@ -51,19 +51,19 @@ export const vehicles: Vehicle[] = [
   },
   {
     id: 4,
-    name: 'Toyota Corolla 2024',
+    name: 'Honda Accord 2018',
     price: '₦28,000,000',
     image: '/car-honda.png',
-    year: 2024,
+    year: 2018,
     mileage: '15,000 km',
     fuel: 'Petrol',
     transmission: 'Automatic',
     condition: 'Nigerian Used',
     featured: false,
     bodyType: 'Sedan',
-    make: 'Toyota',
+    make: 'Honda',
     description:
-      'Reliable Toyota Corolla perfect for daily driving. Excellent fuel economy with modern safety features and comfortable interior.',
+      'Clean Nigerian used Honda Accord in excellent condition. Smooth ride, well-maintained with full service history and comfortable interior.',
   },
   {
     id: 5,
@@ -83,7 +83,7 @@ export const vehicles: Vehicle[] = [
   },
 ]
 
-export const makes = ['All', 'Toyota', 'Lexus', 'Mercedes-Benz'] as const
+export const makes = ['All', 'Toyota', 'Lexus', 'Mercedes-Benz', 'Honda'] as const
 export const conditions = ['All', 'Nigerian Used', 'Foreign Used', 'Brand New'] as const
 export const bodyTypes = ['All', 'Sedan', 'SUV', 'Coupe', 'Truck'] as const
 export const priceRanges = [

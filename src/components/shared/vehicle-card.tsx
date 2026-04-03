@@ -1,18 +1,19 @@
-import { Car, ChevronRight, Gauge, MessageCircle, Star } from 'lucide-react'
+import { Car, ChevronRight, Gauge, Phone, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { WhatsAppIcon } from '@/components/shared/whatsapp-icon'
 import { Vehicle } from '@/types'
 import Link from 'next/link'
 
 interface VehicleCardProps {
   vehicle: Vehicle
-  showWhatsApp?: boolean
+  checkAvailability?: boolean
 }
 
-export function VehicleCard({ vehicle, showWhatsApp = true }: VehicleCardProps) {
+export function VehicleCard({ vehicle, checkAvailability = false }: VehicleCardProps) {
   const whatsappMessage = encodeURIComponent(
-    `Hi Dabiri Autos! I'm interested in the ${vehicle.name} (${vehicle.condition}) listed at ${vehicle.price}. Is it still available?`
+    `Hi Dabiri Autos! I'm interested in the ${vehicle.name} (${vehicle.condition}). Is it still available?`
   )
 
   return (
@@ -51,7 +52,26 @@ export function VehicleCard({ vehicle, showWhatsApp = true }: VehicleCardProps) 
               {vehicle.name}
             </h3>
           </div>
-          <div className="text-xl md:text-2xl font-bold text-[#E53935] mb-4">{vehicle.price}</div>
+          <div className="flex gap-2 mb-4">
+            <a
+              href="tel:+2347025317059"
+              aria-label={`Call about ${vehicle.name}`}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#E53935]/10 border border-[#E53935]/30 text-[#E53935] hover:bg-[#E53935] hover:text-white transition-all duration-300 text-sm font-medium"
+            >
+              <Phone className="w-4 h-4" aria-hidden="true" />
+              Call
+            </a>
+            <a
+              href={`https://wa.me/2347025317059?text=${whatsappMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`WhatsApp about ${vehicle.name}`}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300 text-sm font-medium"
+            >
+              <WhatsAppIcon className="w-4 h-4" />
+              WhatsApp
+            </a>
+          </div>
           <div className="grid grid-cols-2 gap-2 text-sm text-gray-400 mb-4">
             <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
               <Car className="w-4 h-4 text-[#E53935]" aria-hidden="true" />
@@ -71,23 +91,25 @@ export function VehicleCard({ vehicle, showWhatsApp = true }: VehicleCardProps) 
             </div>
           </div>
           <div className="flex gap-2">
-            <Link href={`/inventory#vehicle-${vehicle.id}`} className="flex-1">
-              <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold transition-all duration-300 hover:scale-105">
-                View Details
-                <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
-              </Button>
-            </Link>
-            {showWhatsApp && (
+            {checkAvailability ? (
               <a
-                href={`https://wa.me/2347025317059?text=${whatsappMessage}`}
+                href="https://www.instagram.com/dabiri_autos"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Inquire about ${vehicle.name} on WhatsApp`}
+                className="flex-1"
               >
-                <Button className="border-[#E53935] text-[#E53935] hover:bg-[#E53935] hover:text-white transition-all duration-300">
-                  <MessageCircle className="w-4 h-4" aria-hidden="true" />
+                <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold transition-all duration-300 hover:scale-105">
+                  Check Availability
+                  <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Button>
               </a>
+            ) : (
+              <Link href={`/inventory#vehicle-${vehicle.id}`} className="flex-1">
+                <Button className="w-full bg-white hover:bg-gray-100 text-black font-semibold transition-all duration-300 hover:scale-105">
+                  View Details
+                  <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
+                </Button>
+              </Link>
             )}
           </div>
         </CardContent>

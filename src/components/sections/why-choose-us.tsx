@@ -1,16 +1,10 @@
 'use client'
 
-import { Shield, BadgeDollarSign, Wallet, ArrowLeftRight, HeartHandshake, Award } from 'lucide-react'
+import { BadgeDollarSign, Wallet, HeartHandshake, Award } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { AuroraBg } from '@/components/shared/aurora-bg'
 
 const reasons = [
-  {
-    icon: Shield,
-    title: 'Verified Vehicles',
-    description: 'Every vehicle undergoes thorough inspection to ensure quality and reliability.',
-    color: 'from-emerald-500 to-green-600',
-  },
   {
     icon: BadgeDollarSign,
     title: 'Competitive Pricing',
@@ -22,12 +16,6 @@ const reasons = [
     title: 'Flexible Payment',
     description: 'Car financing options available to help you drive your dream car home.',
     color: 'from-blue-500 to-indigo-600',
-  },
-  {
-    icon: ArrowLeftRight,
-    title: 'Trade-In Options',
-    description: 'Upgrade your ride with our seamless iSWAP trade-in service.',
-    color: 'from-violet-500 to-purple-600',
   },
   {
     icon: HeartHandshake,
@@ -52,8 +40,7 @@ export function WhyChooseUsSection() {
       {/* Light mode: concentric arc rings — visible on red-50 */}
       <div className="dark:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border-2 border-red-200 rounded-full z-[1]" aria-hidden="true" />
       <div className="dark:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] border border-red-300/50 rounded-full z-[1]" aria-hidden="true" />
-      {/* Light mode: bottom divider */}
-      <div className="dark:hidden absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#E53935]/40 to-transparent z-[1]" aria-hidden="true" />
+
       <div className="container mx-auto px-4 relative z-[2]">
         <div className="text-center mb-12 md:mb-16">
           <Badge className="mb-4 bg-[#E53935]/10 dark:bg-white/10 text-[#E53935] border-[#E53935]/20 backdrop-blur-sm px-4 py-1.5">
@@ -65,9 +52,40 @@ export function WhyChooseUsSection() {
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-body-lg">
             We are committed to providing you with the best car buying experience in Nigeria.
           </p>
+
+          <div className="mt-8 md:mt-10 flex flex-col items-center text-gray-800 dark:text-white">
+            {/* Speedometer */}
+            <svg viewBox="0 0 200 115" className="w-44 md:w-56" aria-hidden="true">
+              {/* Track — full grey background arc */}
+              <path d="M 20 100 A 80 80 0 0 1 180 100" stroke="#e5e7eb" strokeWidth="10" fill="none" strokeLinecap="round" />
+              {/* Red zone: 0–33% → (20,100) to (59.4,31.1) */}
+              <path d="M 20 100 A 80 80 0 0 1 59.4 31.1" stroke="#E53935" strokeWidth="10" fill="none" strokeLinecap="round" />
+              {/* Amber zone: 33–66% → (59.4,31.1) to (138.5,29.9) */}
+              <path d="M 59.4 31.1 A 80 80 0 0 1 138.5 29.9" stroke="#F59E0B" strokeWidth="10" fill="none" strokeLinecap="round" />
+              {/* Green zone: 66–100% → (138.5,29.9) to (180,100) */}
+              <path d="M 138.5 29.9 A 80 80 0 0 1 180 100" stroke="#22C55E" strokeWidth="10" fill="none" strokeLinecap="round" />
+              {/* Tick marks at 0/25/50/75/100% */}
+              {[0, 25, 50, 75, 100].map((pct) => {
+                const angle = Math.PI - (pct / 100) * Math.PI
+                const x1 = 100 + 71 * Math.cos(angle)
+                const y1 = 100 - 71 * Math.sin(angle)
+                const x2 = 100 + 83 * Math.cos(angle)
+                const y2 = 100 - 83 * Math.sin(angle)
+                return <line key={pct} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" />
+              })}
+              {/* Needle at 98% */}
+              <line x1="100" y1="100" x2="178" y2="96" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              {/* Center hub */}
+              <circle cx="100" cy="100" r="7" fill="#22C55E" />
+              <circle cx="100" cy="100" r="3" fill="white" />
+              {/* Value label */}
+              <text x="100" y="88" textAnchor="middle" fontSize="22" fontWeight="800" fill="#22C55E" fontFamily="sans-serif">98%</text>
+            </svg>
+            <div className="text-sm md:text-base text-gray-500 dark:text-gray-400 -mt-1 tracking-widest uppercase">Customer Satisfaction</div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {reasons.map((item, index) => {
             const Icon = item.icon
             return (

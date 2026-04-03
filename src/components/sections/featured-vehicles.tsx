@@ -28,8 +28,7 @@ export function FeaturedVehiclesSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-red-50 dark:hidden z-[1]" aria-hidden="true" />
       {/* Light mode: diagonal red accent block bottom-right */}
       <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-red-100/60 to-transparent dark:hidden z-[1]" aria-hidden="true" />
-      {/* Light mode: section bottom divider */}
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#E53935]/40 to-transparent dark:hidden z-[1]" aria-hidden="true" />
+
 
       <div className="relative z-[2] container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
@@ -48,7 +47,7 @@ export function FeaturedVehiclesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {featuredCars.map((car) => (
-            <VehicleCard key={car.id} vehicle={car} showWhatsApp={false} />
+            <VehicleCard key={car.id} vehicle={car} />
           ))}
         </div>
 

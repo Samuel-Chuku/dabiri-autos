@@ -1,11 +1,39 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { CheckCircle2, Car, Users, Shield, Award } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { AuroraBg } from '@/components/shared/aurora-bg'
+
+function AnimatedValue({ value, started }: { value: string; started: boolean }) {
+  const match = value.match(/^([\d,]+)(\+?)$/)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!match) return
+    if (!started) { setCount(0); return }
+    const target = parseInt(match[1].replace(/,/g, ''), 10)
+    const duration = 1800
+    const startTime = performance.now()
+    let rafId: number
+    const step = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 4)
+      setCount(Math.floor(eased * target))
+      if (progress < 1) rafId = requestAnimationFrame(step)
+      else setCount(target)
+    }
+    rafId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(rafId)
+  }, [started]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!match) return <>{value}</>
+  const formatted = count >= 1000 ? count.toLocaleString() : String(count)
+  return <>{formatted}{match[2]}</>
+}
 
 const specialties = [
   'Toyota Specialists',
@@ -17,13 +45,27 @@ const specialties = [
 ]
 
 const stats = [
-  { value: '363+', label: 'Cars Sold', icon: Car },
+  { value: '400+', label: 'Cars Sold', icon: Car },
   { value: '8,655+', label: 'Happy Followers', icon: Users },
   { value: '100%', label: 'Verified Vehicles', icon: Shield },
   { value: 'RC: 8313006', label: 'Registered Company', icon: Award },
 ]
 
 export function AboutSection() {
+  const statsRef = useRef<HTMLDivElement>(null)
+  const [started, setStarted] = useState(false)
+
+  useEffect(() => {
+    const el = statsRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { setStarted(entry.isIntersecting) },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <AuroraBg>
     <section id="aboutus" className="py-20 md:py-32 relative overflow-hidden">
@@ -31,8 +73,7 @@ export function AboutSection() {
       <div className="absolute inset-0 bg-white dark:hidden z-[1]" aria-hidden="true" />
       {/* Light mode: top-left red gradient wash */}
       <div className="absolute top-0 left-0 w-[600px] h-[500px] bg-gradient-to-br from-red-50 to-transparent dark:hidden z-[1]" aria-hidden="true" />
-      {/* Light mode: bottom divider */}
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#E53935]/40 to-transparent dark:hidden z-[1]" aria-hidden="true" />
+
       <div className="container mx-auto px-4 relative z-[2]">
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
@@ -76,7 +117,7 @@ export function AboutSection() {
           </div>
 
           {/* Stats grid with glass cards */}
-          <div className="grid grid-cols-2 gap-4 md:gap-5 relative">
+          <div ref={statsRef} className="grid grid-cols-2 gap-4 md:gap-5 relative">
             {/* Light mode: red-tinted panel behind stats */}
             <div className="absolute -inset-4 md:-inset-6 bg-red-50 rounded-3xl dark:hidden" aria-hidden="true" />
             {stats.map((stat, index) => {
@@ -84,11 +125,18 @@ export function AboutSection() {
               return (
                 <div key={index} className="group">
                   <Card className="p-5 md:p-6 text-center glass-card relative bg-white dark:bg-transparent border-red-100 dark:border-white/10 shadow-md dark:shadow-none hover:border-[#E53935]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#E53935]/10 rounded-2xl">
+                    {stat.label === 'Cars Sold' && (
+                      <div className="absolute top-0 right-0 overflow-hidden w-16 h-16 rounded-tr-2xl pointer-events-none">
+                        <div className="absolute top-3 right-[-18px] w-16 bg-[#E53935] text-white text-[9px] font-bold uppercase tracking-wider text-center py-0.5 rotate-45 shadow-sm">
+                          so far
+                        </div>
+                      </div>
+                    )}
                     <div className="w-14 h-14 bg-[#E53935]/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#E53935] transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 icon-glow">
                       <Icon className="w-7 h-7 text-[#E53935] group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div className="text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-[#E53935] transition-colors">
-                      {stat.value}
+                      <AnimatedValue value={stat.value} started={started} />
                     </div>
                     <div className="text-gray-500 dark:text-gray-400 text-sm mt-1">{stat.label}</div>
                   </Card>
