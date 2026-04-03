@@ -1,10 +1,11 @@
 'use client'
 
-import { MapPin, Phone, Clock, Instagram, Navigation } from 'lucide-react'
+import { MapPin, Phone, Clock, Instagram, Mail, Navigation } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { ContactForm } from '@/components/shared/contact-form'
 import { WhatsAppIcon } from '@/components/shared/whatsapp-icon'
 import { AuroraBg } from '@/components/shared/aurora-bg'
+import { MapboxMap } from '@/components/shared/mapbox-map'
 
 const contactInfo = [
   {
@@ -25,6 +26,12 @@ const contactInfo = [
     title: 'Follow Us',
     detail: '@dabiri_autos',
     external: true,
+  },
+  {
+    href: 'mailto:info@dabiriautos.ng',
+    icon: Mail,
+    title: 'Email Us',
+    detail: 'info@dabiriautos.ng',
   },
 ]
 
@@ -80,7 +87,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-1">Business Hours</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                  <p className="text-gray-600 dark:text-gray-400">Mon - Sat: 9:00 AM - 8:00 PM</p>
                 </div>
               </div>
             </div>
@@ -91,15 +98,8 @@ export function ContactSection() {
         </AuroraBg>
 
         {/* Map */}
-        <div id="map-section" className="relative h-[700px] sticky top-20">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.0289!2d3.3525!3d6.4971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b5b3f7d7a1d%3A0x4e6b5c5f8a9b0c1d!2s14%20Olatunde%20Onimole%20St%2C%20Surulere%2C%20Lagos!5e0!3m2!1sen!2sng!4v1699999999999!5m2!1sen!2sng"
-            className="absolute inset-0 w-full h-full border-0"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Dabiri Autos location on Google Maps"
-          />
+        <div id="map-section" className="relative h-full min-h-[700px] sticky top-20">
+          <MapboxMap className="absolute inset-0 w-full h-full" />
 
           <div className="absolute top-6 left-6 right-6 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-5 max-w-sm z-10">
             <div className="flex items-start gap-4">
@@ -121,7 +121,7 @@ export function ContactSection() {
                 </p>
                 <div className="flex items-center gap-2 mt-2">
                   <Badge className="bg-green-100 text-green-700 text-xs">Open Now</Badge>
-                  <span className="text-xs text-gray-400">Closes 6:00 PM</span>
+                  <span className="text-xs text-gray-400">Closes 8:00 PM</span>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@ export function ContactSection() {
               </div>
               <div>
                 <span className="text-xs text-gray-500 dark:text-gray-400">Hours</span>
-                <p className="text-sm font-medium text-gray-900 dark:text-white">Mon - Sat: 9AM - 6PM</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-white">Mon - Sat: 9AM - 8PM</p>
               </div>
             </div>
           </div>
@@ -228,14 +228,7 @@ export function ContactSection() {
 
       {/* Mobile Map */}
       <div className="lg:hidden relative h-[300px] w-full z-[2]">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.0289!2d3.3525!3d6.4971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b5b3f7d7a1d%3A0x4e6b5c5f8a9b0c1d!2s14%20Olatunde%20Onimole%20St%2C%20Surulere%2C%20Lagos!5e0!3m2!1sen!2sng!4v1699999999999!5m2!1sen!2sng"
-          className="absolute inset-0 w-full h-full border-0"
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Dabiri Autos location on Google Maps"
-        />
+        <MapboxMap className="absolute inset-0 w-full h-full" />
         <div className="absolute bottom-4 left-4 right-4 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-4 z-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
