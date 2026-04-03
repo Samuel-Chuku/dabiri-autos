@@ -14,10 +14,10 @@ const contactInfo = [
     detail: '14 Olatunde Onimole St, Surulere, Lagos 100011, Lagos',
   },
   {
-    href: 'tel:+2348102487687',
+    href: 'tel:+2347025317059',
     icon: Phone,
     title: 'Phone / WhatsApp',
-    detail: '08102487687',
+    detail: '07025317059',
   },
   {
     href: 'https://instagram.com/dabiri_autos',
@@ -138,7 +138,7 @@ export function ContactSection() {
                 Directions
               </a>
               <a
-                href="tel:+2348102487687"
+                href="tel:+2347025317059"
                 className="flex items-center justify-center gap-2 bg-primary text-white px-4 py-3 rounded-xl font-medium hover:bg-primary-dark transition-colors min-h-[44px]"
                 aria-label="Call Dabiri Autos"
               >
@@ -147,7 +147,7 @@ export function ContactSection() {
               </a>
             </div>
             <a
-              href="https://wa.me/2348102487687"
+              href="https://wa.me/2347025317059"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 w-full flex items-center justify-center gap-2 bg-whatsapp text-white px-4 py-3 rounded-xl font-medium hover:bg-whatsapp-dark transition-colors min-h-[44px]"
@@ -203,7 +203,7 @@ export function ContactSection() {
 
           <div className="flex gap-3 mb-6">
             <a
-              href="tel:+2348102487687"
+              href="tel:+2347025317059"
               className="flex-1 flex items-center justify-center gap-2 bg-black text-white px-4 py-3 rounded-xl font-medium min-h-[44px]"
               aria-label="Call Dabiri Autos"
             >
@@ -211,7 +211,7 @@ export function ContactSection() {
               Call
             </a>
             <a
-              href="https://wa.me/2348102487687"
+              href="https://wa.me/2347025317059"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 bg-whatsapp text-white px-4 py-3 rounded-xl font-medium min-h-[44px]"

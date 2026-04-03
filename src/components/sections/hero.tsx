@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { WhatsAppButton } from '@/components/shared/whatsapp-button'
-import { stats } from '@/data/stats'
 
 const HERO_BACKGROUNDS = [
   { id: 'main', image: '/dabiri-bg.png', alt: 'Dabiri Autos car lot with lineup of vehicles' },
@@ -96,8 +95,7 @@ export function HeroSection() {
           </h1>
 
           <p className="text-body-lg text-gray-300/90 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed text-center lg:text-left">
-            Quality foreign and Nigerian used vehicles from trusted brands.
-            We specialize in Toyota, Lexus, and Mercedes-Benz.{' '}
+            Verified vehicles, competitive prices, and a seamless experience — from Lagos to your driveway.{' '}
             <span className="text-[#E53935] font-semibold">
               iBUY &bull; iSELL &bull; iSWAP
             </span>
@@ -136,26 +134,6 @@ export function HeroSection() {
           ))}
         </div>
 
-        {/* STATS BAR */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-12 lg:mt-16">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon
-            return (
-              <div
-                key={index}
-                className="stat-card-prominent rounded-xl p-3 md:p-4 text-center"
-              >
-                <div className="w-8 h-8 rounded-lg bg-[#E53935]/20 flex items-center justify-center mx-auto mb-2">
-                  <Icon className="w-4 h-4 text-[#E53935]" aria-hidden="true" />
-                </div>
-                <div className="text-lg md:text-xl font-display font-bold text-white">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-gray-400 mt-0.5">{stat.label}</div>
-              </div>
-            )
-          })}
-        </div>
       </div>
 
       {/* Bottom fade into next section */}

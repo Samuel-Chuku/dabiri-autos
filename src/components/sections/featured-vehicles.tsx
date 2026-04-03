@@ -1,4 +1,4 @@
-import { ArrowRight, Gauge } from 'lucide-react'
+import { ArrowRight, Gauge, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -48,11 +48,11 @@ export function FeaturedVehiclesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {featuredCars.map((car) => (
-            <VehicleCard key={car.id} vehicle={car} />
+            <VehicleCard key={car.id} vehicle={car} showWhatsApp={false} />
           ))}
         </div>
 
-        <div className="text-center mt-12 md:mt-16">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 md:mt-16">
           <Link href="/inventory">
             <Button
               size="lg"
@@ -62,6 +62,20 @@ export function FeaturedVehiclesSection() {
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </Button>
           </Link>
+          <a
+            href="https://wa.me/2347025317059?text=Hi%20Dabiri%20Autos!%20I%27d%20like%20to%20ask%20about%20a%20vehicle."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-semibold px-8 transition-all duration-300 group"
+            >
+              <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
+              Ask Us on WhatsApp
+            </Button>
+          </a>
         </div>
       </div>
     </section>

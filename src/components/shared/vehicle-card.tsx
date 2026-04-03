@@ -7,9 +7,10 @@ import Link from 'next/link'
 
 interface VehicleCardProps {
   vehicle: Vehicle
+  showWhatsApp?: boolean
 }
 
-export function VehicleCard({ vehicle }: VehicleCardProps) {
+export function VehicleCard({ vehicle, showWhatsApp = true }: VehicleCardProps) {
   const whatsappMessage = encodeURIComponent(
     `Hi Dabiri Autos! I'm interested in the ${vehicle.name} (${vehicle.condition}) listed at ${vehicle.price}. Is it still available?`
   )
@@ -76,16 +77,18 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
                 <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
               </Button>
             </Link>
-            <a
-              href={`https://wa.me/2348102487687?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Inquire about ${vehicle.name} on WhatsApp`}
-            >
-              <Button className="border-[#E53935] text-[#E53935] hover:bg-[#E53935] hover:text-white transition-all duration-300">
-                <MessageCircle className="w-4 h-4" aria-hidden="true" />
-              </Button>
-            </a>
+            {showWhatsApp && (
+              <a
+                href={`https://wa.me/2347025317059?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Inquire about ${vehicle.name} on WhatsApp`}
+              >
+                <Button className="border-[#E53935] text-[#E53935] hover:bg-[#E53935] hover:text-white transition-all duration-300">
+                  <MessageCircle className="w-4 h-4" aria-hidden="true" />
+                </Button>
+              </a>
+            )}
           </div>
         </CardContent>
       </Card>

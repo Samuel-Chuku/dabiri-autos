@@ -18,7 +18,7 @@ export function WhatsAppButton({
 
   return (
     <a
-      href={`https://wa.me/2348102487687?text=${encodedMessage}`}
+      href={`https://wa.me/2347025317059?text=${encodedMessage}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Send us a message on WhatsApp"

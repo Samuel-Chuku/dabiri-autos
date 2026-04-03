@@ -81,8 +81,8 @@ export function Footer() {
         <line x1="50" y1="43" x2="50" y2="15" strokeWidth="4" strokeLinecap="round"/><line x1="50" y1="43" x2="76" y2="58" strokeWidth="4" strokeLinecap="round"/><line x1="50" y1="43" x2="66" y2="84" strokeWidth="4" strokeLinecap="round"/><line x1="50" y1="43" x2="34" y2="84" strokeWidth="4" strokeLinecap="round"/><line x1="50" y1="43" x2="24" y2="58" strokeWidth="4" strokeLinecap="round"/>
       </svg>
 
-      <div className="container mx-auto px-4 py-6 md:py-9 relative">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+      <div className="container mx-auto px-4 py-4 md:py-7 relative">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           <div className="col-span-2 md:col-span-1">
             <div className="bg-gray-100 dark:bg-white rounded-lg p-1.5 inline-block mb-2">
               <img
@@ -101,7 +101,7 @@ export function Footer() {
               {[
                 { href: 'https://instagram.com/dabiri_autos', icon: Instagram, label: 'Instagram' },
                 { href: 'https://facebook.com/dabiri_autos', icon: Facebook, label: 'Facebook' },
-                { href: 'https://wa.me/2348102487687', icon: MessageCircle, label: 'WhatsApp' },
+                { href: 'https://wa.me/2347025317059', icon: MessageCircle, label: 'WhatsApp' },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -162,7 +162,7 @@ export function Footer() {
             <ul className="space-y-2">
               {[
                 { icon: MapPin, text: '14 Olatunde Onimole St, Surulere, Lagos' },
-                { icon: Phone, text: '08102487687' },
+                { icon: Phone, text: '07025317059' },
                 { icon: Instagram, text: '@dabiri_autos' },
               ].map((item, index) => (
                 <li key={index} className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm group">
@@ -174,7 +174,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 dark:border-white/10 mt-7 md:mt-9 pt-4 md:pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div className="border-t border-gray-200 dark:border-white/10 mt-5 md:mt-7 pt-3 md:pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-gray-500 dark:text-gray-400 text-sm text-center md:text-left">
             &copy; {currentYear} Dabiri Autos Limited. All rights reserved.{' '}
             <span className="text-primary">RC: 8313006</span>

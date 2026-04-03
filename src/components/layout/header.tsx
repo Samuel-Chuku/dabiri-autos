@@ -131,7 +131,7 @@ export function Header() {
 
             <div className="hidden md:flex items-center gap-3">
               <ThemeToggle />
-              <a href="tel:+2348102487687" aria-label="Call Dabiri Autos">
+              <a href="tel:+2347025317059" aria-label="Call Dabiri Autos">
                 <Button variant="outline" className="border-black dark:border-white text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-slow">
                   <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
                   Call Us
@@ -206,7 +206,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="flex flex-col gap-3 mt-6">
-                <a href="tel:+2348102487687" aria-label="Call Dabiri Autos">
+                <a href="tel:+2347025317059" aria-label="Call Dabiri Autos">
                   <Button variant="outline" className="border-black dark:border-white text-black dark:text-white w-full min-h-[44px]">
                     <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
                     Call Us

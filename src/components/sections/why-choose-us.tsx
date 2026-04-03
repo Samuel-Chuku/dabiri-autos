@@ -67,7 +67,7 @@ export function WhyChooseUsSection() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {reasons.map((item, index) => {
             const Icon = item.icon
             return (
@@ -75,15 +75,15 @@ export function WhyChooseUsSection() {
                 key={index}
                 className={`group opacity-0 animate-slide-up stagger-${index + 1}`}
               >
-                <div className="h-full p-7 md:p-8 glass-card bg-white dark:bg-transparent border border-gray-100 dark:border-white/5 shadow-md dark:shadow-none rounded-2xl hover:border-[#E53935]/30 dark:hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#E53935]/10">
+                <div className="h-full p-4 md:p-8 glass-card bg-white dark:bg-transparent border border-gray-100 dark:border-white/5 shadow-md dark:shadow-none rounded-2xl hover:border-[#E53935]/30 dark:hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#E53935]/10">
                   {/* Icon with gradient bg and glow */}
-                  <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg icon-glow`}>
-                    <Icon className="w-7 h-7 text-white" strokeWidth={1.8} aria-hidden="true" />
+                  <div className={`w-11 h-11 md:w-14 md:h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg icon-glow`}>
+                    <Icon className="w-5 h-5 md:w-7 md:h-7 text-white" strokeWidth={1.8} aria-hidden="true" />
                   </div>
-                  <h3 className="text-h3 text-gray-900 dark:text-white mb-2.5 group-hover:text-[#E53935] transition-colors font-display">
+                  <h3 className="text-sm md:text-h3 text-gray-900 dark:text-white mb-2 group-hover:text-[#E53935] transition-colors font-sans font-semibold">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-body leading-relaxed">{item.description}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs md:text-body leading-relaxed">{item.description}</p>
                 </div>
               </div>
             )

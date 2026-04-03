@@ -49,12 +49,6 @@ export function AboutSection() {
               specializing in quality Nigerian used and foreign used vehicles. We are passionate
               about helping you find the perfect car that fits your lifestyle and budget.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-8 text-body leading-relaxed">
-              Located in Surulere, Lagos, we offer a wide selection of vehicles from top brands
-              including Toyota, Lexus, and Mercedes-Benz. Our services include iBUY (we buy your
-              car), iSELL (quality vehicles for sale), and iSWAP (trade-in your vehicle).
-            </p>
-
             <div className="grid grid-cols-2 gap-3 md:gap-4 mb-8">
               {specialties.map((item, index) => (
                 <div key={index} className="flex items-center gap-2.5 group">
