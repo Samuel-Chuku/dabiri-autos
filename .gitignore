@@ -38,3 +38,6 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 .impeccable.md
+
+# scrollcraft verification output (regenerable)
+scrollcraft/builds/*/lab/

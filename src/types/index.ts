@@ -1,36 +1,24 @@
 export interface Vehicle {
   id: number
+  slug: string
   name: string
   price: string
-  image: string
+  priceValue: number
+  /** null when no photo of this exact car is on file */
+  image: string | null
   year: number
   mileage: string
   fuel: string
   transmission: string
   condition: 'Nigerian Used' | 'Foreign Used' | 'Brand New'
   featured: boolean
-  bodyType?: string
-  make?: string
-  description?: string
+  bodyType: string
+  make: string
+  description: string
 }
 
 export interface Service {
-  icon: React.ComponentType<{ className?: string }>
-  title: string
-  description: string
-  color: string
-}
-
-export interface Stat {
-  value: string
-  label: string
-  icon: React.ComponentType<{ className?: string }>
-}
-
-export interface ContactFormData {
+  code: string
   name: string
-  email: string
-  phone: string
-  message: string
-  vehicleInterest?: string
+  line: string
 }
