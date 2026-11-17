@@ -41,5 +41,5 @@ export const services: Service[] = [
   { code: 'iSWAP', name: 'Trade up', line: 'Drive in with your current car, drive out in the next one. We value yours against ours.' },
   { code: 'Finance', name: 'Pay over time', line: 'Flexible payment plans so the car goes home with you today.' },
   { code: 'Papers', name: 'Documentation', line: 'Change of ownership, customs papers and registration, handled.' },
-  { code: 'After', name: 'After the sale', line: 'Maintenance support, spare parts sourcing and technical help once it is yours.' },
+  { code: 'Care', name: 'After the sale', line: 'Maintenance support, spare parts sourcing and technical help once it is yours.' },
 ]

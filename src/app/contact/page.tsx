@@ -1,3 +1,4 @@
+import { srcSet } from '@/data/media'
 import type { Metadata } from 'next'
 import { ScrollStage } from '@/components/engine/scroll-stage'
 import { CounterTicket } from '@/components/tag/counter-ticket'
@@ -39,7 +40,7 @@ export default function ContactPage() {
 
         <figure className="visit__strip">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/lot-lineup.webp" alt="Cars lined up on the Dabiri Autos lot under the company sign" width="1378" height="725" loading="lazy" />
+          <img src="/media/lot-lineup.webp" srcSet={srcSet("/media/lot-lineup.webp")} sizes="100vw" alt="Cars lined up on the Dabiri Autos lot under the company sign" width="1378" height="725" loading="lazy" />
         </figure>
       </main>
       <Footer />

@@ -36,6 +36,13 @@ export function ScrollStage({ children, className }: { children: React.ReactNode
     let dead = false
     const go = () => {
       if (dead || !ref.current || !window.ScrollCraft) return
+      // Phones get a lighter frame set (half the frames, 720px) before the
+      // engine reads the attribute. Page code, so the engine stays untouched.
+      if (matchMedia('(max-width: 700px)').matches) {
+        ref.current.querySelectorAll<HTMLCanvasElement>('canvas[data-sc-sequence-mobile]').forEach((c) => {
+          c.setAttribute('data-sc-sequence', c.getAttribute('data-sc-sequence-mobile')!)
+        })
+      }
       api = window.ScrollCraft.mount(ref.current)
     }
     loadEngine().then(() => {

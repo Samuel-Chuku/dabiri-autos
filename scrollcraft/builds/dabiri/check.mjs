@@ -40,11 +40,12 @@ async function scrollTo(p, sel, block = 'start') {
   await p.waitForTimeout(1200)
 }
 
-for (const [label, w, h] of [['desk', 1440, 900], ['phone', 390, 844], ['compact', 360, 640]]) {
-  const c = await ctx(w, h, label === 'desk' ? {} : { isMobile: true, hasTouch: true })
+for (const [label, w, h] of [['desk', 1440, 900], ['laptop', 1280, 720], ['tablet', 820, 1180], ['phone', 390, 844], ['compact', 360, 640]]) {
+  const c = await ctx(w, h, ['desk','laptop'].includes(label) ? {} : { isMobile: true, hasTouch: true })
   // HOME
   const home = await page(c, '/', label)
   await shot(home, `${label}-home-0`)
+  if (await home.isVisible('.bar__burger')) { await home.click('.bar__burger'); await home.waitForTimeout(250); await shot(home, `${label}-menu`); await home.keyboard.press('Escape'); await home.waitForTimeout(200) }
   const rail = await home.evaluate(() => { const r = document.querySelector('.floor__rail'); return r ? r.scrollWidth - innerWidth : null })
   log(`[${label}] floor rail overflow: ${rail}px (want > ${Math.round(w / 2)})`)
   await scrollTo(home, '.lot'); await shot(home, `${label}-lot`)
@@ -53,6 +54,10 @@ for (const [label, w, h] of [['desk', 1440, 900], ['phone', 390, 844], ['compact
   await scrollTo(home, '#counter'); await shot(home, `${label}-counter`)
   const stats = await home.$$eval('.stats dd', (els) => els.map((e) => e.textContent))
   log(`[${label}] stats after entry: ${stats.join(' | ')}`)
+  if (label !== 'desk' && label !== 'laptop') {
+    const small = await home.evaluate(() => [...document.querySelectorAll('a,button,select,textarea')].filter((e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return r.width && r.height && cs.visibility !== 'hidden' && (r.height < 40 || r.width < 40) && !e.closest('.sr,.skip,figcaption') }).map((e) => (e.getAttribute('aria-label') || e.textContent).trim().slice(0, 24) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height)))
+    log(`[${label}] small tap targets on home: ${small.length ? small.join(' | ') : 'none'}`)
+  }
   log(`[${label}] home errors: ${home._errs.length ? home._errs.join(' ; ') : 'none'}`)
 
   // INVENTORY + TAG FLOW
@@ -68,11 +73,12 @@ for (const [label, w, h] of [['desk', 1440, 900], ['phone', 390, 844], ['compact
   const href = await inv.getAttribute('.vtag__panel a.btn', 'href')
   log(`[${label}] tag WhatsApp message: ${decodeURIComponent(href.split('text=')[1] || '').replace(/\n/g, ' / ')}`)
   await inv.keyboard.press('Escape')
-  // filter: SUV only
-  await inv.selectOption('.sel:nth-child(2) select', 'SUV'); await inv.waitForTimeout(300)
+  // filter: SUV only (phones open the filter panel first)
+  if (await inv.isVisible('.filters__toggle')) { await inv.click('.filters__toggle'); await inv.waitForTimeout(200); await shot(inv, `${label}-filters-open`) }
+  await inv.selectOption('.filters__panel .sel:nth-child(2) select', 'SUV'); await inv.waitForTimeout(300)
   const suv = await inv.$$eval('.row .label__name', (e) => e.map((x) => x.textContent))
   log(`[${label}] SUV filter -> ${suv.join(', ')}`)
-  await inv.selectOption('.sel:nth-child(4) select', '1'); await inv.waitForTimeout(300)
+  await inv.selectOption('.filters__panel .sel:nth-child(4) select', '1'); await inv.waitForTimeout(300)
   log(`[${label}] SUV + under 30M empty state: ${await inv.isVisible('.inv__empty')}`)
   await inv.click('.inv__empty .btn--ghost'); await inv.waitForTimeout(300)
   await inv.click('.row:nth-child(1) .textbtn'); await inv.waitForTimeout(500)

@@ -155,3 +155,14 @@ Act 5 (interior). Low motion by design, one wipe, one line.
 Balance 443 → 401: **42 credits of the 100 allowed.** One plate (14), one
 lost job (14, billed but the download failed in the stock script), one C300
 re-light from the real lot photo for the hero cutout (14). Originals in `gen/`.
+
+## Mobile pass (2026-11-17, second round)
+
+Phones get 85 turntable frames at 720px (1.3 MB, was 4.6 MB) and 800w photos
+via srcset: a full home scroll is 2.46 MB on a phone against 5.77 MB on desktop.
+Tag moved into the header bar under 900px; inventory filters collapse behind a
+"Filter and sort" toggle; details open as a bottom sheet; touch targets ≥ 44px;
+fields at 16px so iOS does not zoom; mobile menu fixed (header backdrop-filter
+was collapsing it) and given tap-to-call. Portrait tablets use the stacked hero.
+Verified: harness green at 1440×900, 1280×720, 820×1180, 390×844, 360×640 and
+reduced motion; functional checks green at all five sizes.

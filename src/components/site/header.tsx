@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { CTA, whatsappHref } from '@/data/site'
+import { CTA, company, whatsappHref } from '@/data/site'
 import { useTag } from '@/components/tag/tag-context'
 
 const links = [
@@ -66,6 +66,10 @@ export function Header() {
           ))}
         </nav>
         <a className="btn btn--accent btn--lg btn--block" href={whatsappHref(tag.message())} target="_blank" rel="noopener noreferrer">{CTA}</a>
+        <p className="menu__facts">
+          <a href={company.phoneHref}>Call {company.phoneDisplay}</a>
+          <span>{company.street}, Surulere · {company.hoursShort}</span>
+        </p>
       </div>
     </header>
   )

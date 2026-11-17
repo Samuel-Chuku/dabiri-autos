@@ -1,5 +1,6 @@
 'use client'
 
+import { srcSet } from '@/data/media'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { vehicles, makes, conditions, bodyTypes, priceRanges } from '@/data/vehicles'
 import { CTA, whatsappHref } from '@/data/site'
@@ -23,6 +24,7 @@ export function InventoryBrowser() {
   const [price, setPrice] = useState<number>(0)
   const [sort, setSort] = useState<string>('featured')
   const [open, setOpen] = useState<Vehicle | null>(null)
+  const [panel, setPanel] = useState(false)
 
   const list = useMemo(() => {
     const r = priceRanges[price]
@@ -39,7 +41,8 @@ export function InventoryBrowser() {
     return s
   }, [make, body, cond, price, sort])
 
-  const filtered = make !== 'All' || body !== 'All' || cond !== 'All' || price !== 0
+  const active = [make !== 'All', body !== 'All', cond !== 'All', price !== 0].filter(Boolean).length
+  const filtered = active > 0
   const reset = () => { setMake('All'); setBody('All'); setCond('All'); setPrice(0) }
 
   return (
@@ -55,12 +58,19 @@ export function InventoryBrowser() {
 
       <div className="filters" role="search" aria-label="Filter cars">
         <div className="filters__inner sc-wrap">
+          <button type="button" className="filters__toggle" aria-expanded={panel} aria-controls="filter-panel" onClick={() => setPanel((o) => !o)}>
+            <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M3 5h14M6 10h8M9 15h2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+            Filter and sort{active > 0 && <span className="filters__badge sc-nums">{active}</span>}
+          </button>
+          <span className="filters__count sc-nums">{list.length} of {vehicles.length}</span>
+          <div id="filter-panel" className="filters__panel" data-open={panel}>
           <Select label="Make" value={make} onChange={setMake} options={makes.map((m) => ({ v: m, l: m === 'All' ? 'Any make' : m }))} />
           <Select label="Body" value={body} onChange={setBody} options={bodyTypes.map((m) => ({ v: m, l: m === 'All' ? 'Any body' : m }))} />
           <Select label="Condition" value={cond} onChange={setCond} options={conditions.map((m) => ({ v: m, l: m === 'All' ? 'Any condition' : m }))} />
           <Select label="Price" value={String(price)} onChange={(v) => setPrice(Number(v))} options={priceRanges.map((p, i) => ({ v: String(i), l: p.label }))} />
           <Select label="Sort" value={sort} onChange={setSort} options={sorts.map((s) => ({ v: s.id, l: s.label }))} />
           {filtered && <button type="button" className="filters__reset" onClick={reset}>Clear</button>}
+          </div>
         </div>
       </div>
 
@@ -81,7 +91,7 @@ export function InventoryBrowser() {
                 <button type="button" className="row__img" onClick={() => setOpen(v)} aria-label={`Open details for ${v.name}`}>
                   {v.image ? (
                     /* eslint-disable-next-line @next/next/no-img-element */
-                    <img src={v.image} alt="" width="800" height="600" loading="lazy" />
+                    <img src={v.image} srcSet={srcSet(v.image)} sizes="(max-width: 760px) 100vw, 45vw" alt="" width="800" height="600" loading="lazy" />
                   ) : <NoPhoto name={v.name} />}
                 </button>
                 <div className="row__label label">
@@ -150,7 +160,7 @@ function Details({ car, onClose }: { car: Vehicle | null; onClose: () => void })
           <div className="sheet__img">
             {car.image ? (
               /* eslint-disable-next-line @next/next/no-img-element */
-              <img src={car.image} alt={`${car.name} on the Dabiri Autos lot`} width="1000" height="800" />
+              <img src={car.image} srcSet={srcSet(car.image)} sizes="(max-width: 760px) 100vw, 50vw" alt={`${car.name} on the Dabiri Autos lot`} width="1000" height="800" />
             ) : <NoPhoto name={car.name} />}
           </div>
           <div className="sheet__body label">

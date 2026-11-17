@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { srcSet } from '@/data/media'
 import { ScrollStage } from '@/components/engine/scroll-stage'
 import { TagButton } from '@/components/tag/tag-button'
 import { CounterTicket } from '@/components/tag/counter-ticket'
@@ -19,7 +20,7 @@ export default function Home() {
         <section className="hero" data-sc-act="pin" data-sc-span="1.9" data-sc-drift="#0d0b0b" aria-labelledby="hero-h">
           <div data-sc-stage className="hero__stage">
             <picture className="hero__plate" aria-hidden="true">
-              <source media="(max-width: 700px)" srcSet="/media/hero-plate-m.webp" />
+              <source media="(max-width: 700px), (orientation: portrait) and (max-width: 1100px)" srcSet="/media/hero-plate-m.webp" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/media/hero-plate.webp" alt="" width="2400" height="1350" fetchPriority="high" />
             </picture>
@@ -64,7 +65,7 @@ export default function Home() {
           <div className="lot__grid sc-wrap">
             <figure className="lot__main" data-sc-in>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/lot-lineup.webp" alt="A row of cars parked on the Dabiri Autos lot under the company sign" width="1378" height="725" loading="lazy" />
+              <img src="/media/lot-lineup.webp" srcSet={srcSet("/media/lot-lineup.webp")} sizes="(max-width: 860px) 100vw, 55vw" alt="A row of cars parked on the Dabiri Autos lot under the company sign" width="1378" height="725" loading="lazy" />
               <figcaption>The lineup, {company.addressLine}.</figcaption>
             </figure>
             <div className="lot__text" data-sc-stagger="70" data-sc-in>
@@ -84,12 +85,12 @@ export default function Home() {
             </div>
             <figure className="lot__side lot__side--a" data-sc-in>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/highlander-red-floor.webp" alt="A grey Toyota Highlander on the lot's red painted floor" width="1196" height="1400" loading="lazy" />
+              <img src="/media/highlander-red-floor.webp" srcSet={srcSet("/media/highlander-red-floor.webp")} sizes="(max-width: 860px) 50vw, 30vw" alt="A grey Toyota Highlander on the lot's red painted floor" width="1196" height="1400" loading="lazy" />
               <figcaption>On the red floor.</figcaption>
             </figure>
             <figure className="lot__side lot__side--b" data-sc-in>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/sonata-lot.webp" alt="A black Hyundai Sonata parked on the lot" width="1400" height="1400" loading="lazy" />
+              <img src="/media/sonata-lot.webp" srcSet={srcSet("/media/sonata-lot.webp")} sizes="(max-width: 860px) 50vw, 40vw" alt="A black Hyundai Sonata parked on the lot" width="1400" height="1400" loading="lazy" />
               <figcaption>Afternoon, Surulere.</figcaption>
             </figure>
           </div>
@@ -108,7 +109,7 @@ export default function Home() {
                   <div className="obj__img" data-sc-tilt="5">
                     {v.image ? (
                       /* eslint-disable-next-line @next/next/no-img-element */
-                      <img src={v.image} alt={`${v.name} on the Dabiri Autos lot`} width="800" height="1000" loading="lazy" />
+                      <img src={v.image} srcSet={srcSet(v.image)} sizes="(max-width: 700px) 72vw, 26vw" alt={`${v.name} on the Dabiri Autos lot`} width="800" height="1000" loading="lazy" />
                     ) : (
                       <NoPhoto name={v.name} />
                     )}
@@ -154,7 +155,7 @@ export default function Home() {
           <div className="inside__wrap">
             <figure className="inside__fig" data-sc-reveal="up" data-sc-reveal-at="0.12 0.5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/c300-interior.webp" alt="Black leather front seats of the Mercedes-Benz C-Class, door open" width="1400" height="1400" loading="lazy" />
+              <img src="/media/c300-interior.webp" srcSet={srcSet("/media/c300-interior.webp")} sizes="(max-width: 860px) 90vw, 34rem" alt="Black leather front seats of the Mercedes-Benz C-Class, door open" width="1400" height="1400" loading="lazy" />
             </figure>
             <p className="inside__line" data-sc-cue="0.32 0.95 0.25 0.2">
               Sit in it before you pay for it.
@@ -167,7 +168,7 @@ export default function Home() {
         <section className="turn" data-sc-act="pin" data-sc-span="4.2" data-sc-drift="#080707" aria-labelledby="turn-h">
           <div data-sc-stage className="turn__stage">
             <div className="turn__view">
-              <canvas data-sc-sequence="/media/turn/frame_{iiii}.webp:169:1" aria-hidden="true" />
+              <canvas data-sc-sequence="/media/turn/frame_{iiii}.webp:169:1" data-sc-sequence-mobile="/media/turn-m/frame_{iiii}.webp:85:1" aria-hidden="true" />
               <div className="turn__sweep" aria-hidden="true" />
             </div>
             <div className="turn__copy" data-sc-cue="0 0.97 0 0.08">
