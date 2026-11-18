@@ -4,6 +4,7 @@ import { ScrollStage } from '@/components/engine/scroll-stage'
 import { TagButton } from '@/components/tag/tag-button'
 import { CounterTicket } from '@/components/tag/counter-ticket'
 import { Footer } from '@/components/site/footer'
+import { FloorNav } from '@/components/site/floor-nav'
 import { NoPhoto } from '@/components/site/no-photo'
 import { vehicles } from '@/data/vehicles'
 import { CTA, company, services, stats, whatsappHref } from '@/data/site'
@@ -109,7 +110,14 @@ export default function Home() {
         </section>
 
         {/* 3 · APPETITE: walk the floor sideways */}
-        <section id="floor" className="floor" data-sc-act="pan" data-sc-span="3.4" aria-labelledby="floor-h">
+        <section id="floor" className="floor" data-sc-act="pan" data-sc-span="3.4" data-sc-touch="rail" aria-labelledby="floor-h">
+          {/* touch screens: heading and controls above a swipe rail (see ScrollStage) */}
+          <div className="floor__touch">
+            <p className="floor__kicker mono">The floor · swipe</p>
+            <h2 className="h2 floor__th">The floor.</h2>
+            <p className="body">{vehicles.length} cars in stock now. Press <b>Tag</b> on the ones you want to ask about and they follow you to the counter.</p>
+            <FloorNav count={vehicles.length} />
+          </div>
           <div data-sc-stage className="floor__stage">
             <div className="floor__rail" data-sc-pan="0.04">
               <div className="floor__lead">

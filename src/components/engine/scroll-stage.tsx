@@ -12,6 +12,9 @@ declare global {
   interface Window { ScrollCraft?: { mount: (root: Element) => SCApi } }
 }
 
+/* Must match the touch-rail media query in globals.css. */
+const TOUCH_RAIL = '(max-width: 900px), (hover: none) and (pointer: coarse)'
+
 let loading: Promise<void> | null = null
 function loadEngine() {
   if (typeof window === 'undefined') return Promise.resolve()
@@ -41,6 +44,18 @@ export function ScrollStage({ children, className }: { children: React.ReactNode
       if (matchMedia('(max-width: 700px)').matches) {
         ref.current.querySelectorAll<HTMLCanvasElement>('canvas[data-sc-sequence-mobile]').forEach((c) => {
           c.setAttribute('data-sc-sequence', c.getAttribute('data-sc-sequence-mobile')!)
+        })
+      }
+      // Touch screens: a scroll-driven sideways pan reads as a page that will
+      // not scroll. Acts marked data-sc-touch="rail" become plain flow
+      // sections whose rail the visitor swipes, with their own controls.
+      if (matchMedia(TOUCH_RAIL).matches) {
+        ref.current.querySelectorAll<HTMLElement>('[data-sc-touch="rail"]').forEach((act) => {
+          act.removeAttribute('data-sc-act'); act.removeAttribute('data-sc-span')
+          act.querySelectorAll('[data-sc-stage]').forEach((n) => n.removeAttribute('data-sc-stage'))
+          act.querySelectorAll('[data-sc-pan]').forEach((n) => n.removeAttribute('data-sc-pan'))
+          act.querySelectorAll('[data-sc-tilt]').forEach((n) => n.removeAttribute('data-sc-tilt'))
+          act.classList.add('is-rail')
         })
       }
       api = window.ScrollCraft.mount(ref.current)

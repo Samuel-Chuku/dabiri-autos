@@ -836,3 +836,39 @@ html:has(dialog[open]) { overflow: hidden; }
 @media (max-width: 700px), (orientation: portrait) and (max-width: 1100px) {
   .hero__word { font-size: 22vw; letter-spacing: -0.05em; top: calc(var(--bar-h) + 17svh); padding-right: 0.06em; }
 }
+
+/* ====================================== FLOOR on touch: a swipe rail ===== */
+.floor__touch { display: none; }
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .floor { padding-block: var(--sc-section) clamp(1rem, 4vw, 2rem); height: auto !important; }
+  .floor__touch { display: flex; flex-direction: column; gap: 0.9rem; padding-inline: var(--sc-gutter); margin-bottom: 1.5rem; }
+  .floor__kicker { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red-text); }
+  .floor__stage { display: block; position: static !important; height: auto !important; overflow: visible; }
+  .floor__lead { display: none; }
+  .floor__rail {
+    display: flex; height: auto; padding: 0.25rem var(--sc-gutter) 1rem; gap: 1rem;
+    overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--sc-gutter);
+    scrollbar-width: none; transform: none !important; -webkit-overflow-scrolling: touch;
+  }
+  .floor__rail::-webkit-scrollbar { display: none; }
+  .floor__rail > * { scroll-snap-align: start; }
+  .obj { width: min(78vw, 22rem); opacity: 1 !important; }
+  .obj__label { transform: none !important; }
+  .obj__img { transform: none !important; }
+  .floor__end { width: min(70vw, 20rem); align-self: center; padding-right: 0; }
+}
+.fnav { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; margin-top: 0.4rem; }
+.fnav__count { font-size: 0.82rem; letter-spacing: 0.04em; color: var(--sc-ink-soft); }
+.fnav__count span:first-child { color: var(--sc-ink); font-weight: 500; }
+.fnav__bar { height: 2px; border-radius: 1px; background: var(--sc-hairline-strong); overflow: hidden; }
+.fnav__bar i { display: block; height: 100%; background: var(--sc-accent); transform-origin: 0 50%; transition: transform 160ms var(--sc-ease-out); }
+.fnav__btns { display: flex; gap: 0.5rem; }
+.fnav__btn { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--sc-hairline-strong); background: color-mix(in oklab, var(--sc-surface) 80%, transparent); color: var(--sc-ink); cursor: pointer; transition: opacity 160ms var(--sc-ease-out), transform 120ms var(--sc-ease-out), background-color 160ms var(--sc-ease-out); }
+.fnav__btn:active { transform: scale(0.92); }
+.fnav__btn:disabled { opacity: 0.3; cursor: default; }
+.fnav__btn--next:not(:disabled) { background: var(--sc-accent); border-color: var(--sc-accent); color: #fff; }
+@media (prefers-reduced-motion: no-preference) {
+  .fnav__btn--next:not(:disabled) svg { animation: nudge 1.8s var(--sc-ease-out) infinite; }
+  @keyframes nudge { 0%, 60%, 100% { transform: none; } 30% { transform: translateX(3px); } }
+}
