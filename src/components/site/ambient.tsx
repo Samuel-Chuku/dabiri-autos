@@ -10,12 +10,16 @@ import { useEffect } from 'react'
 export function Ambient() {
   useEffect(() => {
     const root = document.documentElement
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { root.style.setProperty('--page-p', '0.3'); return }
+    // Written on the ambient layer itself, never on <html>: a custom property
+    // on the root restyles the whole document every frame.
+    const amb = document.querySelector<HTMLElement>('.amb')
+    if (!amb) return
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { amb.style.setProperty('--page-p', '0.3'); return }
     let raf = 0
     const write = () => {
       raf = 0
       const max = Math.max(1, root.scrollHeight - innerHeight)
-      root.style.setProperty('--page-p', (scrollY / max).toFixed(4))
+      amb.style.setProperty('--page-p', (scrollY / max).toFixed(4))
     }
     const on = () => { if (!raf) raf = requestAnimationFrame(write) }
     write()

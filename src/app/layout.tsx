@@ -6,6 +6,7 @@ import { TagProvider } from '@/components/tag/tag-context'
 import { ValetTag } from '@/components/tag/valet-tag'
 import { Header } from '@/components/site/header'
 import { Ambient } from '@/components/site/ambient'
+import { SmoothScroll } from '@/components/site/smooth-scroll'
 import { themeScript } from '@/components/site/theme-script'
 
 const archivo = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-archivo', display: 'swap' })
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <Ambient />
+        <SmoothScroll />
         <TagProvider>
           <Header />
           <div className="sc-grain" aria-hidden="true" />

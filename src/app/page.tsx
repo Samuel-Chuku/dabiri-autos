@@ -16,7 +16,7 @@ export default function Home() {
     <ScrollStage>
       <main id="main">
         {/* 1 · ANTICIPATION: the shutter rolls up on object one */}
-        <section className="hero stage-dark" data-sc-act="pin" data-sc-span="1.9" data-sc-drift="#0d0b0b" aria-labelledby="hero-h">
+        <section className="hero stage-dark" data-sc-act="pin" data-sc-span="1.9" aria-labelledby="hero-h">
           <div data-sc-stage className="hero__stage">
             <picture className="hero__plate" aria-hidden="true">
               <source media="(max-width: 700px), (orientation: portrait) and (max-width: 1100px)" srcSet="/media/hero-plate-m.webp" />
@@ -109,7 +109,7 @@ export default function Home() {
         </section>
 
         {/* 3 · APPETITE: walk the floor sideways */}
-        <section id="floor" className="floor" data-sc-act="pan" data-sc-span="3.4" data-sc-drift="#110d0c" aria-labelledby="floor-h">
+        <section id="floor" className="floor" data-sc-act="pan" data-sc-span="3.4" aria-labelledby="floor-h">
           <div data-sc-stage className="floor__stage">
             <div className="floor__rail" data-sc-pan="0.04">
               <div className="floor__lead">
@@ -163,9 +163,9 @@ export default function Home() {
         </section>
 
         {/* 5 · INTIMACY: authored near-silence before the peak */}
-        <section className="inside" data-sc-act="flow" data-sc-drift="#0a0909" aria-label="Inside the car">
+        <section className="inside" data-sc-act="flow" aria-label="Inside the car">
           <div className="inside__wrap">
-            <figure className="inside__fig" data-sc-reveal="up" data-sc-reveal-at="0.12 0.5">
+            <figure className="inside__fig" data-sc-in>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/media/c300-interior.webp" srcSet={srcSet("/media/c300-interior.webp")} sizes="(max-width: 860px) 100vw, 72vw" alt="Black leather front seats of the Mercedes-Benz C-Class, door open" width="1400" height="1400" loading="lazy" />
             </figure>
@@ -177,7 +177,7 @@ export default function Home() {
         </section>
 
         {/* 6 · AWE (PEAK): one car turns a full circle under inspection */}
-        <section className="turn stage-dark" data-sc-act="pin" data-sc-span="4.2" data-sc-drift="#080707" aria-labelledby="turn-h">
+        <section className="turn stage-dark" data-sc-act="pin" data-sc-span="4.2" aria-labelledby="turn-h">
           <div data-sc-stage className="turn__stage">
             <div className="turn__view">
               <canvas data-sc-sequence="/media/turn/frame_{iiii}.webp:169:1" data-sc-sequence-mobile="/media/turn-m/frame_{iiii}.webp:85:1" aria-hidden="true" />
