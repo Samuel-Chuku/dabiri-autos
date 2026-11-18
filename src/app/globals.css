@@ -732,3 +732,33 @@ html[data-theme="light"] .obj__img, html[data-theme="light"] .row__img { backgro
   .vtag__label { display: none; }
   .vtag__card { padding-right: 0.75rem; column-gap: 0; }
 }
+
+/* The shutter opens on arrival: one short roll-up so the first thing a visitor
+   sees is the car, not a closed door. It sits on `translate`, separate from
+   the scroll-driven `transform`, so the two never fight. */
+.hero__shutter { animation: shutter-open 1150ms cubic-bezier(0.65, 0, 0.25, 1) 250ms both; }
+@keyframes shutter-open { from { translate: 0 0; } to { translate: 0 -150%; } }
+@media (prefers-reduced-motion: reduce) { .hero__shutter { display: none; } }
+/* With the shutter gone, the plate's ceiling light would sit as a pale band
+   under the header. A ceiling of shadow sinks it into the room. */
+.hero__stage::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 30vh; pointer-events: none; background: linear-gradient(180deg, #0b0909 0%, rgb(11 9 9 / 0.82) 32%, rgb(11 9 9 / 0.35) 68%, transparent); }
+
+/* inside: the cabin runs off the left edge of the page, the line holds the right */
+@media (min-width: 861px) {
+  .inside__wrap { grid-template-columns: minmax(0, 1fr) minmax(15rem, 21rem); padding-left: 0; gap: clamp(2rem, 4vw, 4.5rem); }
+  .inside__fig { grid-column: 1; }
+  .inside__fig img { aspect-ratio: 16 / 10; max-height: 82vh; object-position: 50% 58%; border-radius: 0 var(--r) var(--r) 0; box-shadow: var(--sc-e3); }
+  .inside__line { grid-column: 2; max-width: 14ch; }
+}
+@media (max-width: 860px) {
+  .inside__wrap { padding-inline: 0; }
+  .inside__fig img { border-radius: 0; aspect-ratio: 5 / 4; object-position: 50% 58%; }
+  .inside__line { padding-inline: var(--sc-gutter); }
+}
+.inside__line { text-wrap: balance; }
+/* inside, round two: the square cabin photo fills the room top to bottom too */
+@media (min-width: 861px) {
+  .inside { padding-block: clamp(2.5rem, 7vh, 5rem); }
+  .inside__fig img { aspect-ratio: auto; width: 100%; height: min(86vh, 60rem); max-height: none; object-position: 50% 60%; }
+  .inside__line { padding-bottom: clamp(1rem, 6vh, 4rem); }
+}

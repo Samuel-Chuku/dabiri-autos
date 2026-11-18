@@ -154,7 +154,7 @@ export default function Home() {
           <div className="inside__wrap">
             <figure className="inside__fig" data-sc-reveal="up" data-sc-reveal-at="0.12 0.5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/c300-interior.webp" srcSet={srcSet("/media/c300-interior.webp")} sizes="(max-width: 860px) 90vw, 34rem" alt="Black leather front seats of the Mercedes-Benz C-Class, door open" width="1400" height="1400" loading="lazy" />
+              <img src="/media/c300-interior.webp" srcSet={srcSet("/media/c300-interior.webp")} sizes="(max-width: 860px) 100vw, 72vw" alt="Black leather front seats of the Mercedes-Benz C-Class, door open" width="1400" height="1400" loading="lazy" />
             </figure>
             <p className="inside__line" data-sc-cue="0.32 0.95 0.25 0.2">
               Sit in it before you pay for it.
