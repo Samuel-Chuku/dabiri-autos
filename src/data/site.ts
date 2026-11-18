@@ -16,6 +16,8 @@ export const company = {
   hours: 'Monday to Saturday, 9:00 to 18:00',
   hoursShort: 'Mon to Sat, 9am to 6pm',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=14+Olatunde+Onimole+St%2C+Surulere%2C+Lagos',
+  /* Pin for the map. Carried over from the previous site's Mapbox setup; confirm on the ground. */
+  lngLat: [3.3525, 6.4971] as [number, number],
   mapEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.0289!2d3.3525!3d6.4971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b5b3f7d7a1d%3A0x4e6b5c5f8a9b0c1d!2s14%20Olatunde%20Onimole%20St%2C%20Surulere%2C%20Lagos!5e0!3m2!1sen!2sng!4v1699999999999!5m2!1sen!2sng',
 }

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 const OPEN = 9, CLOSE = 18
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-function lagosNow() {
+export function lagosNow() {
   const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Lagos', weekday: 'long', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date())
   const get = (t: string) => parts.find((p) => p.type === t)?.value ?? ''
   return { day: DAYS.indexOf(get('weekday')), mins: parseInt(get('hour'), 10) % 24 * 60 + parseInt(get('minute'), 10) }

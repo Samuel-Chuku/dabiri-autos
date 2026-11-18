@@ -49,7 +49,7 @@ for (const [label, w, h] of [['desk', 1440, 900], ['laptop', 1280, 720], ['table
   const rail = await home.evaluate(() => { const r = document.querySelector('.floor__rail'); return r ? r.scrollWidth - innerWidth : null })
   log(`[${label}] floor rail overflow: ${rail}px (want > ${Math.round(w / 2)})`)
   await scrollTo(home, '.lot'); await shot(home, `${label}-lot`)
-  await scrollTo(home, '.lot__side--a', 'center'); await shot(home, `${label}-lot-2`)
+  await scrollTo(home, '.lot__reel', 'center'); await shot(home, `${label}-lot-2`)
   await scrollTo(home, '#services'); await shot(home, `${label}-services`)
   await scrollTo(home, '#counter'); await shot(home, `${label}-counter`)
   const stats = await home.$$eval('.stats dd', (els) => els.map((e) => e.textContent))

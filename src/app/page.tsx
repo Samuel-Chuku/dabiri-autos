@@ -61,13 +61,9 @@ export default function Home() {
 
         {/* 2 · TRUST: the real lot, real numbers */}
         <section className="lot" aria-labelledby="lot-h">
-          <div className="lot__grid sc-wrap">
-            <figure className="lot__main" data-sc-in>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/lot-lineup.webp" srcSet={srcSet("/media/lot-lineup.webp")} sizes="(max-width: 860px) 100vw, 55vw" alt="A row of cars parked on the Dabiri Autos lot under the company sign" width="1378" height="725" loading="lazy" />
-              <figcaption>The lineup, {company.addressLine}.</figcaption>
-            </figure>
+          <div className="lot__top">
             <div className="lot__text" data-sc-stagger="70" data-sc-in>
+              <p className="lot__kicker mono">The lot · Surulere</p>
               <h2 id="lot-h" className="h2">The lot is real. Come and walk it.</h2>
               <p className="body">
                 Dabiri Autos Limited is a registered Nigerian dealership ({company.rc}) for Nigerian used and foreign used cars,
@@ -82,15 +78,32 @@ export default function Home() {
                 ))}
               </dl>
             </div>
-            <figure className="lot__side lot__side--a" data-sc-in>
+            <figure className="lot__main" data-sc-in>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/highlander-red-floor.webp" srcSet={srcSet("/media/highlander-red-floor.webp")} sizes="(max-width: 860px) 50vw, 30vw" alt="A grey Toyota Highlander on the lot's red painted floor" width="1196" height="1400" loading="lazy" />
+              <img src="/media/lot-lineup.webp" srcSet={srcSet("/media/lot-lineup.webp")} sizes="(max-width: 860px) 100vw, 62vw" alt="A row of cars parked on the Dabiri Autos lot under the company sign" width="1378" height="725" loading="lazy" />
+              <figcaption>The lineup, {company.addressLine}.</figcaption>
+            </figure>
+          </div>
+          <div className="lot__reel" data-sc-stagger="90" data-sc-in>
+            <figure className="lot__shot">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/media/highlander-red-floor.webp" srcSet={srcSet("/media/highlander-red-floor.webp")} sizes="(max-width: 860px) 50vw, 25vw" alt="A grey Toyota Highlander on the lot's red painted floor" width="1196" height="1400" loading="lazy" />
               <figcaption>On the red floor.</figcaption>
             </figure>
-            <figure className="lot__side lot__side--b" data-sc-in>
+            <figure className="lot__shot">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/sonata-lot.webp" srcSet={srcSet("/media/sonata-lot.webp")} sizes="(max-width: 860px) 50vw, 40vw" alt="A black Hyundai Sonata parked on the lot" width="1400" height="1400" loading="lazy" />
+              <img src="/media/accord-lot.webp" alt="A white Honda Accord parked on gravel outside a Lagos building" width="661" height="792" loading="lazy" />
+              <figcaption>Fresh in, Honda Accord.</figcaption>
+            </figure>
+            <figure className="lot__shot">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/media/sonata-lot.webp" srcSet={srcSet("/media/sonata-lot.webp")} sizes="(max-width: 860px) 50vw, 25vw" alt="A black Hyundai Sonata parked on the lot" width="1400" height="1400" loading="lazy" />
               <figcaption>Afternoon, Surulere.</figcaption>
+            </figure>
+            <figure className="lot__shot">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/media/highlander-lot.webp" alt="A white Toyota Highlander on the lot's green turf" width="755" height="716" loading="lazy" />
+              <figcaption>On the turf, Toyota Highlander.</figcaption>
             </figure>
           </div>
         </section>
