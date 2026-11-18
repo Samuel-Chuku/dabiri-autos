@@ -831,3 +831,8 @@ html[data-theme="light"] .obj__img, html[data-theme="light"] .row__img { backgro
 /* an open sheet owns the wheel: the page behind it stays put */
 html:has(dialog[open]) { overflow: hidden; }
 .sheet { overscroll-behavior: contain; }
+
+/* phone hero: the word fits the width, nearly whole, like desktop */
+@media (max-width: 700px), (orientation: portrait) and (max-width: 1100px) {
+  .hero__word { font-size: 22vw; letter-spacing: -0.05em; top: calc(var(--bar-h) + 17svh); padding-right: 0.06em; }
+}
