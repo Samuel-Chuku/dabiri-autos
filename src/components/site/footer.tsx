@@ -9,7 +9,7 @@ import { OpenStatus } from './open-status'
 export function Footer({ slim = false }: { slim?: boolean }) {
   const year = new Date().getFullYear()
   return (
-    <footer className={`foot ${slim ? 'foot--slim' : ''}`}>
+    <footer className={`foot stage-dark ${slim ? 'foot--slim' : ''}`}>
       <div className="foot__strip" aria-hidden="true" />
       <div className="foot__inner">
         {!slim && (

@@ -75,6 +75,7 @@ export function ValetTag() {
         key={swing}
         data-swing={swing > 0 ? '' : undefined}
         aria-expanded={open}
+        aria-label={`Your tag: ${n} ${n === 1 ? 'car' : 'cars'} tagged`}
         tabIndex={atCounter ? -1 : 0}
         onClick={() => setOpen((o) => !o)}
       >

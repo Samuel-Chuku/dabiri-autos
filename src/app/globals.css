@@ -7,25 +7,59 @@
    scrollcraft.css supplies the mechanism; this file is the page.
    ===================================================================== */
 :root {
+  --sc-font-display: var(--font-archivo), system-ui, sans-serif;
+  --sc-font-text: var(--font-archivo), system-ui, sans-serif;
+  --sc-font-mono: var(--font-mono), ui-monospace, monospace;
+  --red-press: #c41d14;
+  --bar-h: 72px;
+  --r: 6px;
+}
+
+/* Two showrooms, one set of roles. Night is the default and every photographic
+   stage (hero, turntable, footer sign) stays night in the day theme too, the
+   way a gallery keeps its projection room dark. Derived engine tokens are
+   restated per scope because custom properties resolve where declared. */
+:root, .stage-dark {
   --sc-canvas: #0d0b0b;
   --sc-surface: #171413;
   --sc-ink: #f2efec;
   --sc-ink-soft: #aaa29d;
   --sc-accent: #e2251b;
   --sc-accent-ink: #ffffff;
-  --sc-font-display: var(--font-archivo), system-ui, sans-serif;
-  --sc-font-text: var(--font-archivo), system-ui, sans-serif;
-  --sc-font-mono: var(--font-mono), ui-monospace, monospace;
-  --sc-shadow-color: 8 30% 2%;
-
   --red-text: #ff5d52;        /* the accent, lifted for small type on dark: 6.3:1 */
-  --red-press: #c41d14;
   --paper: #efebe6;
   --paper-ink: #1a1514;
   --paper-soft: #5b514d;
-  --bar-h: 72px;
-  --r: 6px;
+  --stripe: #1b1716;
+  --sc-shadow-color: 8 30% 2%;
 }
+html[data-theme="light"] {
+  --sc-canvas: #f3efea;
+  --sc-surface: #fbf9f6;
+  --sc-ink: #161110;
+  --sc-ink-soft: #5c524d;     /* 7:1 on the day canvas */
+  --red-text: #bf1b12;        /* the accent, darkened for small type on light: 5.9:1 */
+  --paper: #fffdf9;
+  --stripe: #e7e0d9;
+  --sc-shadow-color: 15 22% 22%;
+}
+html[data-theme="light"] .stage-dark { --sc-canvas: #0d0b0b; }
+.stage-dark, html[data-theme="light"] {
+  --sc-hairline: color-mix(in oklab, var(--sc-ink) 12%, transparent);
+  --sc-hairline-strong: color-mix(in oklab, var(--sc-ink) 22%, transparent);
+  --sc-edge: inset 0 1px 0 color-mix(in oklab, var(--sc-ink) 10%, transparent);
+  --sc-e1: 0 1px 2px hsl(var(--sc-shadow-color) / 0.28), 0 2px 6px -1px hsl(var(--sc-shadow-color) / 0.20);
+  --sc-e2: 0 2px 4px hsl(var(--sc-shadow-color) / 0.24), 0 8px 18px -4px hsl(var(--sc-shadow-color) / 0.30);
+  --sc-e3: 0 4px 8px hsl(var(--sc-shadow-color) / 0.22), 0 18px 40px -8px hsl(var(--sc-shadow-color) / 0.38), 0 48px 90px -24px hsl(var(--sc-shadow-color) / 0.30);
+}
+html[data-theme="light"] { --sc-e1: 0 1px 2px hsl(var(--sc-shadow-color) / 0.10), 0 2px 6px -1px hsl(var(--sc-shadow-color) / 0.08); --sc-e2: 0 2px 4px hsl(var(--sc-shadow-color) / 0.08), 0 10px 22px -6px hsl(var(--sc-shadow-color) / 0.16); --sc-e3: 0 4px 8px hsl(var(--sc-shadow-color) / 0.08), 0 18px 40px -10px hsl(var(--sc-shadow-color) / 0.18), 0 48px 90px -30px hsl(var(--sc-shadow-color) / 0.16); }
+.stage-dark { color: var(--sc-ink); color-scheme: dark; }
+html[data-theme="light"] { color-scheme: light; }
+/* The engine's background drift writes a night --sc-canvas onto <html>; in the
+   day theme body restates the day canvas so the drift never reaches the page. */
+html[data-theme="light"] body { --sc-canvas: #f3efea; }
+html[data-theme="light"] body .stage-dark { --sc-canvas: #0d0b0b; }
+html[data-theme="light"] { background: #f3efea; }
 
 html { background: var(--sc-canvas); }
 body { background: transparent; }
@@ -410,12 +444,12 @@ figcaption { margin-top: 0.7rem; font-size: 0.76rem; letter-spacing: 0.02em; col
 .vtag__list button { background: none; border: 0; color: var(--sc-ink-soft); font-size: 0.8rem; text-decoration: underline; cursor: pointer; padding: 0.4rem; }
 .vtag__fine { margin-top: 0.7rem; font-size: 0.72rem; color: var(--sc-ink-soft); line-height: 1.45; }
 @media (max-width: 900px) {
-  .vtag { top: calc((var(--bar-h) - 44px) / 2); right: calc(var(--sc-gutter) + 54px); z-index: 61; }
+  .vtag { top: calc((var(--bar-h) - 44px) / 2); right: calc(var(--sc-gutter) + 106px); z-index: 61; }
   .vtag__card { width: auto; height: 44px; grid-template-areas: "count label"; padding: 0 0.8rem 0 1.6rem; margin: 0; rotate: -2deg; filter: drop-shadow(0 4px 10px rgb(0 0 0 / 0.45)); }
   .vtag__card[data-swing] { animation-name: swing-sm; }
   .vtag__sub { display: none; }
   .vtag__count { font-size: 1.25rem; }
-  .vtag__panel { right: -54px; }
+  .vtag__panel { right: -106px; }
   .vtag.is-away { transform: none; }
   html.menu-open .vtag { opacity: 0; visibility: hidden; }
 }
@@ -477,7 +511,7 @@ figcaption { margin-top: 0.7rem; font-size: 0.76rem; letter-spacing: 0.02em; col
   .sheet__img { min-height: 0; aspect-ratio: 4 / 3; }
 }
 
-.nophoto { width: 100%; height: 100%; min-height: 12rem; display: grid; place-content: center; justify-items: center; gap: 0.75rem; color: var(--sc-ink-soft); background: repeating-linear-gradient(135deg, var(--sc-surface) 0 12px, #1b1716 12px 13px); }
+.nophoto { width: 100%; height: 100%; min-height: 12rem; display: grid; place-content: center; justify-items: center; gap: 0.75rem; color: var(--sc-ink-soft); background: repeating-linear-gradient(135deg, var(--sc-surface) 0 12px, var(--stripe) 12px 13px); }
 .nophoto p { font-family: var(--sc-font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
 
 /* ========================================================== VISIT ===== */
@@ -635,3 +669,66 @@ figcaption { margin-top: 0.7rem; font-size: 0.76rem; letter-spacing: 0.02em; col
 .counter .foot { margin-top: 0; }
 .counter .counter__wrap { padding-bottom: clamp(3.5rem, 7vw, 6rem); }
 @media (pointer: coarse) { .foot__top { display: inline-flex; align-items: center; min-height: 44px; } }
+
+/* ===================================================== THEME TOGGLE ===== */
+.themebtn { position: relative; display: inline-grid; place-items: center; width: 44px; height: 44px; flex: none; border: 1px solid var(--sc-hairline-strong); border-radius: var(--r); background: transparent; color: var(--sc-ink); cursor: pointer; transition: border-color 160ms var(--sc-ease-out), transform 120ms var(--sc-ease-out); }
+.themebtn:active { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) { .themebtn:hover { border-color: color-mix(in oklab, var(--sc-ink) 55%, transparent); } }
+.themebtn svg { grid-area: 1 / 1; transition: opacity 260ms var(--sc-ease-out), transform 420ms var(--sc-ease-out); }
+/* Night shows the sun (go to day); day shows the moon (go to night). */
+.themebtn__moon { opacity: 0; transform: rotate(-70deg) scale(0.6); }
+html[data-theme="light"] .themebtn__sun { opacity: 0; transform: rotate(70deg) scale(0.6); }
+html[data-theme="light"] .themebtn__moon { opacity: 1; transform: none; }
+@media (max-width: 900px) { .bar__end { gap: 0.5rem; } }
+
+/* Logo: light lettering on night, dark lettering on day. */
+.bar__mark { position: relative; }
+.logo-on-light { display: none; }
+html[data-theme="light"] .bar:not(.stage-dark) .logo-on-dark { display: none; }
+html[data-theme="light"] .bar:not(.stage-dark) .logo-on-light { display: block; }
+
+/* A short cross-fade when the visitor flips the lights, never on load. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-swap, html.theme-swap *, html.theme-swap *::before, html.theme-swap *::after {
+    transition: background-color 380ms var(--sc-ease-out), color 380ms var(--sc-ease-out), border-color 380ms var(--sc-ease-out), fill 380ms var(--sc-ease-out) !important;
+  }
+}
+
+/* ===================================================== DAY SHOWROOM ===== */
+/* Daylight through a high window: warm paper ground, a sun patch that drifts
+   with the scroll, the red floor's reflection low in the room. The night
+   stages sit inside it like lit cabinets. */
+html[data-theme="light"] .amb__wall {
+  background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.55) 0 1px, transparent 1px 6px, rgb(60 40 30 / 0.035) 6px 8px, transparent 8px 13px);
+}
+html[data-theme="light"] .amb__light--warm { background: radial-gradient(closest-side, rgb(255 247 232 / 0.95), rgb(255 244 226 / 0.45) 55%, transparent); }
+html[data-theme="light"] .amb__light--red { background: radial-gradient(closest-side, rgb(226 37 27 / 0.085), rgb(226 37 27 / 0.03) 50%, transparent); }
+html[data-theme="light"] .amb__strip { background: linear-gradient(to top, rgb(120 80 60 / 0.05), transparent); }
+html[data-theme="light"] .amb__vignette { background: radial-gradient(130% 95% at 50% 40%, transparent 60%, rgb(90 60 45 / 0.10)); }
+html[data-theme="light"] .sc-grain { opacity: 0.03; }
+
+html[data-theme="light"] .lot { background: linear-gradient(180deg, transparent, rgb(226 37 27 / 0.055) 45%, transparent); }
+
+/* Night stages meet the day page with a soft shadow line, like a cabinet edge. */
+html[data-theme="light"] .hero.stage-dark, html[data-theme="light"] .turn.stage-dark { box-shadow: 0 30px 60px -30px rgb(40 20 15 / 0.35), 0 -30px 60px -30px rgb(40 20 15 / 0.35); }
+html[data-theme="light"] .foot.stage-dark { box-shadow: 0 -30px 60px -30px rgb(40 20 15 / 0.35); }
+
+/* the ticket: still the one paper object, now lifted off a paper page */
+html[data-theme="light"] .ticket { box-shadow: var(--sc-e3), 0 0 0 1px rgb(26 21 20 / 0.08), inset 0 1px 0 #fff; }
+html[data-theme="light"] .ticket__note textarea { background: #f6f2ed; }
+html[data-theme="light"] .ticket__hole { box-shadow: inset 0 1px 2px rgb(60 40 30 / 0.3), 0 0 0 4px #ebe4dc; }
+html[data-theme="light"] .vtag__card { box-shadow: none; filter: drop-shadow(0 8px 14px rgb(60 35 25 / 0.22)) drop-shadow(0 0 0.5px rgb(26 21 20 / 0.35)); }
+html[data-theme="light"] .vtag__hole { box-shadow: 0 0 0 2.5px #e6ded6; }
+
+html[data-theme="light"] .sel select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M1 1l4 4 4-4' fill='none' stroke='%235c524d' stroke-width='1.5'/></svg>"); }
+html[data-theme="light"] .sheet::backdrop { background: rgb(40 28 24 / 0.42); }
+html[data-theme="light"] .sheet__img { background: #e9e3dc; }
+html[data-theme="light"] .visit__map iframe { filter: grayscale(1) contrast(1.02); }
+html[data-theme="light"] .obj__img, html[data-theme="light"] .row__img { background: #ebe5de; }
+
+/* narrow phones: the header carries logo, tag, lights and menu, so the tag
+   drops its label and keeps the count. */
+@media (max-width: 380px) {
+  .vtag__label { display: none; }
+  .vtag__card { padding-right: 0.75rem; column-gap: 0; }
+}

@@ -6,6 +6,7 @@ import { TagProvider } from '@/components/tag/tag-context'
 import { ValetTag } from '@/components/tag/valet-tag'
 import { Header } from '@/components/site/header'
 import { Ambient } from '@/components/site/ambient'
+import { themeScript } from '@/components/site/theme-script'
 
 const archivo = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-archivo', display: 'swap' })
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' })
@@ -24,14 +25,20 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0d0b0b',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f3efea' },
+    { media: '(prefers-color-scheme: dark)', color: '#0d0b0b' },
+  ],
   viewportFit: 'cover',
-  colorScheme: 'dark',
+  colorScheme: 'dark light',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${mono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${mono.variable}`} data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <Ambient />

@@ -16,7 +16,7 @@ export default function Home() {
     <ScrollStage>
       <main id="main">
         {/* 1 · ANTICIPATION: the shutter rolls up on object one */}
-        <section className="hero" data-sc-act="pin" data-sc-span="1.9" data-sc-drift="#0d0b0b" aria-labelledby="hero-h">
+        <section className="hero stage-dark" data-sc-act="pin" data-sc-span="1.9" data-sc-drift="#0d0b0b" aria-labelledby="hero-h">
           <div data-sc-stage className="hero__stage">
             <picture className="hero__plate" aria-hidden="true">
               <source media="(max-width: 700px), (orientation: portrait) and (max-width: 1100px)" srcSet="/media/hero-plate-m.webp" />
@@ -164,7 +164,7 @@ export default function Home() {
         </section>
 
         {/* 6 · AWE (PEAK): one car turns a full circle under inspection */}
-        <section className="turn" data-sc-act="pin" data-sc-span="4.2" data-sc-drift="#080707" aria-labelledby="turn-h">
+        <section className="turn stage-dark" data-sc-act="pin" data-sc-span="4.2" data-sc-drift="#080707" aria-labelledby="turn-h">
           <div data-sc-stage className="turn__stage">
             <div className="turn__view">
               <canvas data-sc-sequence="/media/turn/frame_{iiii}.webp:169:1" data-sc-sequence-mobile="/media/turn-m/frame_{iiii}.webp:85:1" aria-hidden="true" />
