@@ -3,7 +3,6 @@ import { srcSet } from '@/data/media'
 import { ScrollStage } from '@/components/engine/scroll-stage'
 import { TagButton } from '@/components/tag/tag-button'
 import { CounterTicket } from '@/components/tag/counter-ticket'
-import { VisitPlate } from '@/components/site/visit-plate'
 import { Footer } from '@/components/site/footer'
 import { NoPhoto } from '@/components/site/no-photo'
 import { vehicles } from '@/data/vehicles'
@@ -196,7 +195,6 @@ export default function Home() {
               <p className="body">Everything you tagged on the walk is on this ticket. One press and it is a WhatsApp message to the lot.</p>
             </div>
             <CounterTicket />
-            <VisitPlate as="h3" />
           </div>
           <Footer />
         </section>

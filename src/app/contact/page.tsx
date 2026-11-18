@@ -43,7 +43,7 @@ export default function ContactPage() {
           <img src="/media/lot-lineup.webp" srcSet={srcSet("/media/lot-lineup.webp")} sizes="100vw" alt="Cars lined up on the Dabiri Autos lot under the company sign" width="1378" height="725" loading="lazy" />
         </figure>
       </main>
-      <Footer />
+      <Footer slim />
     </ScrollStage>
   )
 }

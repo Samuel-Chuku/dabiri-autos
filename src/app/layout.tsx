@@ -5,6 +5,7 @@ import './globals.css'
 import { TagProvider } from '@/components/tag/tag-context'
 import { ValetTag } from '@/components/tag/valet-tag'
 import { Header } from '@/components/site/header'
+import { Ambient } from '@/components/site/ambient'
 
 const archivo = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-archivo', display: 'swap' })
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' })
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${archivo.variable} ${mono.variable}`}>
       <body>
         <a href="#main" className="skip">Skip to content</a>
+        <Ambient />
         <TagProvider>
           <Header />
           <div className="sc-grain" aria-hidden="true" />
